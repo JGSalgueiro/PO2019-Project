@@ -6,6 +6,8 @@ import java.io.IOException;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
