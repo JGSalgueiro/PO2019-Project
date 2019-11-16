@@ -38,7 +38,6 @@ public class DoSave extends Command<LibraryManager> {
    try {
       // FIXME implement command
       if(_receiver.getFilename() != null){
-        _form.parse();
         _receiver.save();
       }
       else{
