@@ -2,11 +2,9 @@ package m19.app.works;
 
 import m19.core.LibraryManager;
 import java.util.*;
-// FIXME import other core concepts
 import m19.core.Dvd;
 import m19.core.Book;
 import m19.core.Work;
-// FIXME import ui concepts
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
@@ -26,7 +24,6 @@ public class DoDisplayWorks extends Command<LibraryManager> {
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
   public final void execute() {
-    // FIXME implement command
     List<Work> workArrays = new ArrayList<Work>(_receiver.getAllWorks().values());
     for(Work w : workArrays){
       int id = w.getWorkID();

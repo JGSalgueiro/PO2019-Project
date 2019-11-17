@@ -15,14 +15,13 @@ import m19.app.exception.NoSuchWorkException;
  */
 public class DoDisplayWork extends Command<LibraryManager> {
 
-  // FIXME define input fields
+  /** Id to Display */
   private Input<Integer> _id;
   /**
    * @param receiver
    */
   public DoDisplayWork(LibraryManager receiver) {
     super(Label.SHOW_WORK, receiver);
-    // FIXME initialize input fields
     _id = _form.addIntegerInput(Message.requestWorkId());
   }
 

@@ -48,6 +48,9 @@ public class User{
 		return _reqWorks.size();
 	}
 
+	/**
+	* Returns the max num of Reqs possible
+	**/
 	int canReqNum(){
 		if(_behaviour == UserBehaviour.DEFAULT){
 			return 3;

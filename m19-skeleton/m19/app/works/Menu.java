@@ -10,10 +10,10 @@ public class Menu extends pt.tecnico.po.ui.Menu {
    * @param receiver
    */
   public Menu(LibraryManager receiver) {
-    super(Label.TITLE, new Command<?>[] { //
-      new DoDisplayWork(receiver), //
-      new DoDisplayWorks(receiver), //
-      //new DoPerformSearch(receiver), //
+    super(Label.TITLE, new Command<?>[] { // 4.3
+      new DoDisplayWork(receiver), // 4.3.1
+      new DoDisplayWorks(receiver), // 4.3.2
+      new DoPerformSearch(receiver), // Not Concretized
     });
   }
 

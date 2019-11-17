@@ -10,7 +10,7 @@ import pt.tecnico.po.ui.Input;
  * 4.2.1. Register new user.
  */
 public class DoRegisterUser extends Command<LibraryManager> {
-
+  /** Name and Email of the User to be Registered*/
   private Input<String> _uName;
   private Input<String> _uMail;
   /**

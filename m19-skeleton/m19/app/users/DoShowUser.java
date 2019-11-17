@@ -11,8 +11,7 @@ import pt.tecnico.po.ui.Display;
  * 4.2.2. Show specific user.
  */
 public class DoShowUser extends Command<LibraryManager> {
-
-  // FIXME define input fields
+  /** Id of the User to be shown*/
   private Input<Integer> _id;
   /**
    * @param receiver

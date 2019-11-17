@@ -55,6 +55,9 @@ public class Library implements Serializable {
     return _workList;
   }
 
+  /**
+  * Automaticly Increments NextUserId
+  **/
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
     _userList.put(_nextUserId, u);
@@ -98,6 +101,9 @@ public class Library implements Serializable {
     return w;
   }
   
+  /**
+  * Search Parameter : Title
+  **/
   Work findWorkbyTitle(String searchTerm){
     List<Work> workArrays = new ArrayList<Work>(_workList.values());
     for(Work w : workArrays){
