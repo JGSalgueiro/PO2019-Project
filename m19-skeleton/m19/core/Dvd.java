@@ -1,7 +1,15 @@
 package m19.core;
 
+import java.io.Serializable;
+
+
+/**
+ * Class that represents a DVD.
+ */
 public class Dvd extends Work{
+	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
+
 	private final String _director;
 	private final String _igac;
 

@@ -12,7 +12,6 @@ import java.util.List;
  * Class that represents the library as a whole.
  */
 public class Library implements Serializable {
-
   /** Serial number for serialization. */
   private static final long serialVersionUID = 201901101348L;
 
@@ -53,9 +52,6 @@ public class Library implements Serializable {
     return _workList;
   }
 
-  /**
-  * Automaticly Increments NextUserId
-  **/
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
     _userList.put(_nextUserId, u);
@@ -100,7 +96,7 @@ public class Library implements Serializable {
   }
   
   /**
-  * Search Parameter : Title
+  * Search Parameter : Title of the Work
   **/
   Work findWorkbyTitle(String searchTerm){
     List<Work> workArrays = new ArrayList<Work>(_workList.values());

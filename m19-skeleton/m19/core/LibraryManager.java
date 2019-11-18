@@ -34,14 +34,23 @@ public class LibraryManager {
     return _library.getAllWorks();
   }
 
+  /** 
+  * Automatic NextUserId incrementation 
+  */
   public void registerUser(String uName, String uMail){
     _library.createUser(uName,uMail);
   }
 
+  /** 
+  * Automatic NextWorkId incrementation 
+  */
   public void registerBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String cat){
     _library.createBook(wTitle ,wPrice ,wCopies ,wAuthor , wISBN, cat);
   }
 
+  /** 
+  * Automatic NextWorkId incrementation 
+  */
   public void registerDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector,String wIGAC, String cat){
     _library.createBook(wTitle ,wPrice ,wCopies ,wDirector , wIGAC, cat);
   }

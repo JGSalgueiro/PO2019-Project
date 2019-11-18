@@ -9,9 +9,10 @@ import m19.core.exception.BadEntrySpecificationException;
 import m19.core.Library;
 import m19.core.Category;
 
-
+/**
+ * Class that Parses the a textual Input and converts it into a Library Object.
+ */
 public class Parser {
-
     private Library _library;
 
     Parser(Library lib) {

@@ -20,7 +20,6 @@ public class App {
       try {
         mgr.importFile(datafile);
       } catch (ImportFileException e) {
-        // no behavior described: just present the problem
         e.printStackTrace();
       }
     }

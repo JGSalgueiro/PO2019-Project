@@ -3,8 +3,13 @@ import java.util.*;
 import m19.core.*;
 import java.io.Serializable;
 
+/**
+ * Class that represents a User of the Library.
+ */
 public class User implements Serializable{
+	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
+
 	private final int _userID;
 	private final String _name;
 	private String _email;
@@ -18,16 +23,16 @@ public class User implements Serializable{
 		_name = uName;
 		_email = uEmail;
 		_deliveredOnTime = 0;
-		_isSuspended = false;
+		_isSuspended = false;  
 		_fine = 0;
 		_behaviour = UserBehaviour.DEFAULT;
 	}
 
-	int getUserID(){
+	public int getUserID(){
 		return _userID;
 	}
 
-	String getName(){
+	public String getName(){
 		return _name;
 	}
 
@@ -73,17 +78,6 @@ public class User implements Serializable{
 
 	Boolean getIsSuspended(){
 		return _isSuspended;
-	}
-
-	void lateReturn(int fine){
-		_fine = _fine + fine;
-	}
-
-	void payFine(){
-		if(_fine > 0){
-			_fine = 0;
-			_isSuspended = false;
-		}
 	}
 
 	void suspendUser(){

@@ -2,6 +2,9 @@ package m19.core;
 
 import java.io.Serializable;
 
+/**
+ * Class that represents the Current Date in the running Program.
+ */
 public class Date implements Serializable{
 
 	private static final long serialVersionUID = 201901101348L;

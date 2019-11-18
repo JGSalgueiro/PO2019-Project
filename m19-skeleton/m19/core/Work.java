@@ -2,8 +2,13 @@ package m19.core;
 import java.util.*;
 import java.io.Serializable;
 
+/**
+ * Abstract Class that represents a Generic Work (DVD or Book).
+ */
 public abstract class Work implements Serializable{
+	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
+
 	private final int _workID;
 	private final String _title;
 	private int _price;

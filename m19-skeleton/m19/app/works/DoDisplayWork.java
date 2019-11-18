@@ -14,7 +14,6 @@ import m19.app.exception.NoSuchWorkException;
  * 4.3.1. Display work.
  */
 public class DoDisplayWork extends Command<LibraryManager> {
-
   /** Id to Display */
   private Input<Integer> _id;
   /**
