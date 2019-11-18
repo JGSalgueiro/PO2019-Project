@@ -36,7 +36,7 @@ public class DoDisplayWork extends Command<LibraryManager> {
       int copies = work.getCopies();
       String title = work.getTitle();
       int price = work.getPrice();
-      String cat = work.getCategory();
+      String cat = work.getWorkCategory();
       String type = work.getType();
       String typeId = work.getTypeId();
       String creator = work.getCreator();

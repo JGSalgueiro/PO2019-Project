@@ -1,5 +1,5 @@
 *** tests/A-04-04-M-ok.out	2019-10-28 12:43:38.000000000 +0000
---- tests/A-04-04-M-ok.outhyp	2019-11-18 11:31:16.248178600 +0000
+--- tests/A-04-04-M-ok.outhyp	2019-11-18 12:23:56.943647400 +0000
 ***************
 *** 12,24 ****
   2 - Mostrar todas as obras
@@ -19,13 +19,13 @@
   2 - Mostrar todas as obras
   3 - Efectuar pesquisa de termos
   0 - Sair
-! Escolha uma opção: Introduza o número da obra: 2 - 10 de 10 - Dvd - Era uma vez na Amadora - 20 - null - Fernando Fonseca - 200505550
+! Escolha uma opção: Introduza o número da obra: 2 - 10 de 10 - Dvd - Era uma vez na Amadora - 20 - Ficção - Fernando Fonseca - 200505550
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras
   3 - Efectuar pesquisa de termos
   0 - Sair
-! Escolha uma opção: Introduza o número da obra: 6 - 5 de 5 - Dvd - Lumiar Selvagem - 20 - null - Pedro Fonseca - 200505551
+! Escolha uma opção: Introduza o número da obra: 6 - 5 de 5 - Dvd - Lumiar Selvagem - 20 - Ficção - Pedro Fonseca - 200505551
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras

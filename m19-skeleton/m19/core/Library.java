@@ -78,13 +78,13 @@ public class Library implements Serializable {
     _nextWorkId++;
   }
 
-  void createBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, Category cat){
+  void createBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String cat){
     Book b = new Book(_nextWorkId ,wTitle ,wPrice , wCopies, wAuthor, wISBN, cat);
     _workList.put(_nextWorkId, b);
     _nextWorkId++;
   }
 
-  void createDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector ,String wIGAC, Category cat){
+  void createDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector ,String wIGAC, String cat){
     Dvd b = new Dvd(_nextWorkId ,wTitle ,wPrice ,wCopies ,wDirector ,wIGAC, cat);
     _workList.put(_nextWorkId, b);
     _nextWorkId++;

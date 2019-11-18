@@ -38,11 +38,11 @@ public class LibraryManager {
     _library.createUser(uName,uMail);
   }
 
-  public void registerBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, Category cat){
+  public void registerBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String cat){
     _library.createBook(wTitle ,wPrice ,wCopies ,wAuthor , wISBN, cat);
   }
 
-  public void registerDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector,String wIGAC, Category cat){
+  public void registerDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector,String wIGAC, String cat){
     _library.createBook(wTitle ,wPrice ,wCopies ,wDirector , wIGAC, cat);
   }
 

@@ -1,31 +1,27 @@
 *** tests/A-07-02-M-ok.out	2019-10-28 12:43:38.000000000 +0000
---- tests/A-07-02-M-ok.outhyp	2019-11-18 11:31:21.843213400 +0000
+--- tests/A-07-02-M-ok.outhyp	2019-11-18 12:24:03.768033800 +0000
 ***************
-*** 21,33 ****
-  2 - Mostrar todas as obras
-  3 - Efectuar pesquisa de termos
+*** 23,33 ****
   0 - Sair
-! Escolha uma opção: 0 - 22 de  22 - Livro - A arte de sobreviver no 36 - 30 - Ficção - Joao Fonseca - 1234567892
-! 1 - 5 de  5 - Livro - Analise Matematica sem Mestre - 29 - Técnica e Científica - Carlos Fonseca - 1234567890
+  Escolha uma opção: 0 - 22 de  22 - Livro - A arte de sobreviver no 36 - 30 - Ficção - Joao Fonseca - 1234567892
+  1 - 5 de  5 - Livro - Analise Matematica sem Mestre - 29 - Técnica e Científica - Carlos Fonseca - 1234567890
 ! 2 - 10 de  10 - DVD - Era uma vez na Amadora - 20 - Ficção - Fernando Fonseca - 200505550
 ! 3 - 10 de  10 - DVD - 48 Horas para o Exame - 12 - Ficção - Orlando Fonseca - 200505553
-! 4 - 50 de  50 - Livro - Bairro Alto e o Budismo Zen - 25 - Ficção - Zun Tse Fonseca - 1234567891
-! 5 - 50 de  50 - Livro - Dicionário de Programação - 20 - Referência - Odete Fonseca - 1234567890
+  4 - 50 de  50 - Livro - Bairro Alto e o Budismo Zen - 25 - Ficção - Zun Tse Fonseca - 1234567891
+  5 - 50 de  50 - Livro - Dicionário de Programação - 20 - Referência - Odete Fonseca - 1234567890
 ! 6 - 5 de  5 - DVD - Lumiar Selvagem - 20 - Ficção - Pedro Fonseca - 200505551
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras
---- 21,33 ----
-  2 - Mostrar todas as obras
-  3 - Efectuar pesquisa de termos
+--- 23,33 ----
   0 - Sair
-! Escolha uma opção: 0 - 22 de 22 - Livro - A arte de sobreviver no 36 - 30 - null - Joao Fonseca - 1234567892
-! 1 - 5 de 5 - Livro - Analise Matematica sem Mestre - 29 - null - Carlos Fonseca - 1234567890
-! 2 - 10 de 10 - Dvd - Era uma vez na Amadora - 20 - null - Fernando Fonseca - 200505550
-! 3 - 10 de 10 - Dvd - 48 Horas para o Exame - 12 - null - Orlando Fonseca - 200505553
-! 4 - 50 de 50 - Livro - Bairro Alto e o Budismo Zen - 25 - null - Zun Tse Fonseca - 1234567891
-! 5 - 50 de 50 - Livro - Dicionário de Programação - 20 - null - Odete Fonseca - 1234567890
-! 6 - 5 de 5 - Dvd - Lumiar Selvagem - 20 - null - Pedro Fonseca - 200505551
+  Escolha uma opção: 0 - 22 de 22 - Livro - A arte de sobreviver no 36 - 30 - Ficção - Joao Fonseca - 1234567892
+  1 - 5 de 5 - Livro - Analise Matematica sem Mestre - 29 - Técnica e Científica - Carlos Fonseca - 1234567890
+! 2 - 10 de 10 - Dvd - Era uma vez na Amadora - 20 - Ficção - Fernando Fonseca - 200505550
+! 3 - 10 de 10 - Dvd - 48 Horas para o Exame - 12 - Ficção - Orlando Fonseca - 200505553
+  4 - 50 de 50 - Livro - Bairro Alto e o Budismo Zen - 25 - Ficção - Zun Tse Fonseca - 1234567891
+  5 - 50 de 50 - Livro - Dicionário de Programação - 20 - Referência - Odete Fonseca - 1234567890
+! 6 - 5 de 5 - Dvd - Lumiar Selvagem - 20 - Ficção - Pedro Fonseca - 200505551
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras

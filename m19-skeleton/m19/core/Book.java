@@ -7,7 +7,7 @@ public class Book extends Work{
 	private final String _author;
 	private final String _isbn;
 
-	public Book(int wID, String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, Category cat){
+	public Book(int wID, String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String cat){
 		super(wID, wTitle, wPrice, wCopies, cat);
 		_author = wAuthor;
 		_isbn = wISBN;

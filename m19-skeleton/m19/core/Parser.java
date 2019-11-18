@@ -34,7 +34,6 @@ public class Parser {
       case "DVD":
         parseDVD(components, line);
         break;
-
       case "BOOK":
         parseBook(components, line);
         break;
@@ -51,20 +50,18 @@ public class Parser {
   private void parseDVD(String[] components, String line) throws BadEntrySpecificationException {
     if (components.length != 7)
       throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
-    Category cat = _library.createCat(components[4]);
     int wId = _library.getNextWorkId();
     Dvd dvd = new Dvd(wId, components[1], Integer.parseInt(components[3]), Integer.parseInt(components[6]),
-                       components[2], components[5],cat);
+                       components[2], components[5],components[4]);
     _library.addDvd(dvd);
   }
 
   private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
     if (components.length != 7)
       throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
-    Category cat = _library.createCat(components[4]);
     int wId = _library.getNextWorkId();
     Book book = new Book(wId, components[1], Integer.parseInt(components[3]), Integer.parseInt(components[6]),
-                       components[2], components[5],cat);
+                       components[2], components[5], components[4]);
     _library.addBook(book);
   }
 
