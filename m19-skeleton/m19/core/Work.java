@@ -31,23 +31,23 @@ public abstract class Work implements Serializable{
 		}
 	}
 
-	public int getWorkID(){
+	int getWorkID(){
 		return _workID;
 	}
 
-	public String getTitle(){
+	String getTitle(){
 		return _title;
 	}
 
-	public int getPrice(){
+	int getPrice(){
 		return _price;
 	}
 
-	public int getCopies(){
+	int getCopies(){
 		return _copies;
 	}
 
-	public int getAvailableCopies(){
+	int getAvailableCopies(){
 		return _availableCopies;
 	}
 
@@ -61,7 +61,7 @@ public abstract class Work implements Serializable{
 		_availableCopies--;
 	}
 
-	public String getWorkCategory(){
+	String getWorkCategory(){
 		if(_category == Category.FICTION){
 			return "Ficção";
 		}
@@ -75,9 +75,11 @@ public abstract class Work implements Serializable{
 		return null;
 	}
 
-	public abstract String getType();
+	abstract String getType();
 
-	public abstract String getTypeId();
+	abstract String getTypeId();
 
-	public abstract String getCreator();
+	abstract String getCreator();
+
+	public abstract String toString();
 }

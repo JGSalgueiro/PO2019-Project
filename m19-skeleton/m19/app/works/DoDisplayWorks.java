@@ -26,17 +26,7 @@ public class DoDisplayWorks extends Command<LibraryManager> {
   public final void execute() {
     List<Work> workArrays = new ArrayList<Work>(_receiver.getAllWorks().values());
     for(Work w : workArrays){
-      int id = w.getWorkID();
-      int aCopies = w.getAvailableCopies();
-      int copies = w.getCopies();
-      String title = w.getTitle();
-      int price = w.getPrice();
-      String cat = w.getWorkCategory();
-      String type = w.getType();
-      String typeId = w.getTypeId();
-      String creator = w.getCreator();
-      _display.addLine(id + " - " + aCopies + " de " + copies + " - " + type + " - " + title + " - " + price + 
-                      " - " + cat + " - " + creator + " - " + typeId);
+    _display.addLine(w.toString());
     }
     _display.display();
   }

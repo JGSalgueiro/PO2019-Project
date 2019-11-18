@@ -32,17 +32,7 @@ public class DoDisplayWork extends Command<LibraryManager> {
     int id = _id.value();
     try{
       Work work = _receiver.getWorkbyId(id);
-      int aCopies = work.getAvailableCopies();
-      int copies = work.getCopies();
-      String title = work.getTitle();
-      int price = work.getPrice();
-      String cat = work.getWorkCategory();
-      String type = work.getType();
-      String typeId = work.getTypeId();
-      String creator = work.getCreator();
-      _display.add(id + " - " + aCopies + " de " + copies + " - " + type + " - " + title + " - " + price + 
-                      " - " + cat + " - " + creator + " - " + typeId);
-      _display.display();
+      _display.popup(work.toString());
     }catch(NullPointerException e){
       throw new NoSuchWorkException(id);
     }

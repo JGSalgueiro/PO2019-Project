@@ -27,21 +27,7 @@ public class DoShowUser extends Command<LibraryManager> {
     _form.parse();
     try{
       User u = _receiver.getUser(_id.value());
-      int id = u.getUserID();
-      String name = u.getName();
-      String email = u.getEmail();
-      String behaviour = u.getUserBehaviour();
-      Boolean isSuspended = u.getIsSuspended();
-      int fine = u.getFine();
-
-      if(isSuspended == false){
-        _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - ACTIVO");
-        _display.display();
-      }
-      else if (isSuspended == true) {
-        _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - SUSPENSO" + " - EUR " + fine);
-        _display.display();
-      }
+      _display.popup(u.toString());
     }catch(NullPointerException e){
       throw new NoSuchUserException(_id.value());
     };

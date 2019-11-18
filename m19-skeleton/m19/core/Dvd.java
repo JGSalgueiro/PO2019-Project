@@ -11,16 +11,20 @@ public class Dvd extends Work{
 		_igac = wIGAC;
 	}
 
-	public String getCreator(){
+	String getCreator(){
 		return _director;
 	}
 
-	public String getTypeId(){
+	String getTypeId(){
 		return _igac;	
 	}
 
-	public String getType(){
+	String getType(){
 		return "DVD";
+	}
+
+	public String toString(){
+      	return (getWorkID() + " - " + getAvailableCopies()+ " de " + getCopies() + " - " + getType() + " - " + getTitle() + " - " + getPrice() + " - " + getWorkCategory() + " - "+ getCreator() + " - " + getTypeId());
 	}
 
 }

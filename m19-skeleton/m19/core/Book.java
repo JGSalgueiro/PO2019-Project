@@ -13,16 +13,20 @@ public class Book extends Work{
 		_isbn = wISBN;
 	}
 
-	public String getCreator(){
+	String getCreator(){
 		return _author;
 	}
 
-	public String getTypeId(){
+	String getTypeId(){
 		return _isbn;
 	}
 
-	public String getType(){
+	String getType(){
 		return "Livro";
+	}
+
+	public String toString(){
+      	return (getWorkID() + " - " + getAvailableCopies()+ " de " + getCopies() + " - " + getType() + " - " + getTitle() + " - " + getPrice() + " - " + getWorkCategory() + " - "+ getCreator() + " - " + getTypeId());
 	}
 
 }

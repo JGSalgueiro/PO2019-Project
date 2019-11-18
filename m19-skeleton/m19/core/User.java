@@ -23,19 +23,19 @@ public class User implements Serializable{
 		_behaviour = UserBehaviour.DEFAULT;
 	}
 
-	public int getUserID(){
+	int getUserID(){
 		return _userID;
 	}
 
-	public String getName(){
+	String getName(){
 		return _name;
 	}
 
-	public String getEmail(){
+	String getEmail(){
 		return _email;
 	}
 
-	public int getFine(){
+	int getFine(){
 		return _fine;
 	}
 
@@ -56,7 +56,7 @@ public class User implements Serializable{
 		return 0;
 	}
 
-	public String getUserBehaviour(){
+	String getUserBehaviour(){
 		if(_behaviour == UserBehaviour.DEFAULT){
 			return "NORMAL";
 		}
@@ -71,7 +71,7 @@ public class User implements Serializable{
 	}
 
 
-	public Boolean getIsSuspended(){
+	Boolean getIsSuspended(){
 		return _isSuspended;
 	}
 
@@ -88,5 +88,15 @@ public class User implements Serializable{
 
 	void suspendUser(){
 		_isSuspended = true;
+	}
+
+	public String toString(){
+		if(_isSuspended == false){
+			return(_userID + " - " + _name + " - " + _email + " - " + getUserBehaviour() + " - ACTIVO");
+		}
+		else if(_isSuspended == true){
+			return(_userID + " - " + _name + " - " + _email + " - " + getUserBehaviour() + " - SUSPENSO" + " - EUR " + _fine);
+		}
+	return null;
 	}
 }

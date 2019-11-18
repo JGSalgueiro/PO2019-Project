@@ -4,6 +4,7 @@ import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import m19.core.User;
+import m19.core.ComparatorName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -27,18 +28,7 @@ public class DoShowUsers extends Command<LibraryManager> {
     List<User> userList = new ArrayList<User>(_receiver.getAllUsers().values());
     Collections.sort(userList,new ComparatorName());
     for(User u : userList){
-      int id = u.getUserID();
-      String name = u.getName();
-      String email = u.getEmail();
-      String behaviour = u.getUserBehaviour();
-      Boolean isSuspended = u.getIsSuspended();
-      int fine = u.getFine();
-      if(isSuspended == false){
-        _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - ACTIVO");
-      }
-      else if (isSuspended == true) {
-        _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - SUSPENSO" + " - EUR " + fine);
-      }
+      _display.addLine(u.toString());
     }
     _display.display();
   }
