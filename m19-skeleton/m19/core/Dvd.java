@@ -1,8 +1,7 @@
 package m19.core;
 
-import java.io.Serializable;
-
-public class Dvd extends Work implements Serializable{
+public class Dvd extends Work{
+	private static final Long serialVersionUID = 201901101348L;
 	private final String _director;
 	private final String _igac;
 

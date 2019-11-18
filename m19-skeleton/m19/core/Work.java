@@ -3,6 +3,7 @@ import java.util.*;
 import java.io.Serializable;
 
 public abstract class Work implements Serializable{
+	private static final Long serialVersionUID = 201901101348L;
 	private final int _workID;
 	private final String _title;
 	private int _price;
