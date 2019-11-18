@@ -34,7 +34,7 @@ public class DoShowUsers extends Command<LibraryManager> {
       Boolean isSuspended = u.getIsSuspended();
       int fine = u.getFine();
       if(isSuspended == false){
-        _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - ATIVO");
+        _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - ACTIVO");
       }
       else if (isSuspended == true) {
         _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - SUSPENSO" + " - EUR " + fine);

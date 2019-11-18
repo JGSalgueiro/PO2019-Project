@@ -1,7 +1,7 @@
 *** tests/A-08-01-M-ok.out	2019-10-28 12:43:38.000000000 +0000
---- tests/A-08-01-M-ok.outhyp	2019-11-18 10:56:36.917362400 +0000
+--- tests/A-08-01-M-ok.outhyp	2019-11-18 11:31:23.573936500 +0000
 ***************
-*** 14,28 ****
+*** 14,21 ****
   4 - Mostrar notificações de utente
   5 - Saldar multa de utente
   0 - Sair
@@ -10,14 +10,7 @@
   1 - Registar utente
   2 - Mostrar utente
   3 - Listar utentes
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: 0 - aa - bb@cc.com - NORMAL - ACTIVO
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente
---- 14,27 ----
+--- 14,20 ----
   4 - Mostrar notificações de utente
   5 - Saldar multa de utente
   0 - Sair
@@ -25,15 +18,8 @@
   1 - Registar utente
   2 - Mostrar utente
   3 - Listar utentes
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: 1 - aa - bb@cc.com - NORMAL - ATIVO
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente
 ***************
-*** 30,45 ****
+*** 30,37 ****
   4 - Mostrar notificações de utente
   5 - Saldar multa de utente
   0 - Sair
@@ -42,15 +28,7 @@
   1 - Registar utente
   2 - Mostrar utente
   3 - Listar utentes
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: 0 - aa - bb@cc.com - NORMAL - ACTIVO
-! 1 - bb - cc@dd.com - NORMAL - ACTIVO
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente
---- 29,43 ----
+--- 29,35 ----
   4 - Mostrar notificações de utente
   5 - Saldar multa de utente
   0 - Sair
@@ -58,11 +36,3 @@
   1 - Registar utente
   2 - Mostrar utente
   3 - Listar utentes
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: 1 - aa - bb@cc.com - NORMAL - ATIVO
-! 2 - bb - cc@dd.com - NORMAL - ATIVO
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente

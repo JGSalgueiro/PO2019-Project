@@ -35,7 +35,7 @@ public class DoShowUser extends Command<LibraryManager> {
       int fine = u.getFine();
 
       if(isSuspended == false){
-        _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - ATIVO");
+        _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - ACTIVO");
         _display.display();
         _display.clear();
       }

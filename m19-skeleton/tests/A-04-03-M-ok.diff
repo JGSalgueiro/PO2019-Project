@@ -1,5 +1,5 @@
 *** tests/A-04-03-M-ok.out	2019-10-28 12:43:38.000000000 +0000
---- tests/A-04-03-M-ok.outhyp	2019-11-18 10:56:29.099600000 +0000
+--- tests/A-04-03-M-ok.outhyp	2019-11-18 11:31:15.309380900 +0000
 ***************
 *** 12,24 ****
   2 - Mostrar todas as obras
@@ -19,13 +19,13 @@
   2 - Mostrar todas as obras
   3 - Efectuar pesquisa de termos
   0 - Sair
-! Escolha uma opção: Introduza o número da obra: Mostrar obra: Operação inválida: A obra 0 não existe.
+! Escolha uma opção: Introduza o número da obra: 0 - 22 de 22 - Livro - A arte de sobreviver no 36 - 30 - null - Joao Fonseca - 1234567892
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras
   3 - Efectuar pesquisa de termos
   0 - Sair
-! Escolha uma opção: Introduza o número da obra: 5 - 50 de 50 - Livro - Bairro Alto e o Budismo Zen - 25 - null - Zun Tse Fonseca - 1234567891
+! Escolha uma opção: Introduza o número da obra: 5 - 50 de 50 - Livro - Dicionário de Programação - 20 - null - Odete Fonseca - 1234567890
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras

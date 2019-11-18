@@ -1,5 +1,5 @@
 *** tests/A-05-02-M-ok.out	2019-10-28 12:43:38.000000000 +0000
---- tests/A-05-02-M-ok.outhyp	2019-11-18 10:56:31.767777200 +0000
+--- tests/A-05-02-M-ok.outhyp	2019-11-18 11:31:18.195863200 +0000
 ***************
 *** 14,22 ****
   4 - Mostrar notificações de utente
@@ -15,7 +15,7 @@
   4 - Mostrar notificações de utente
   5 - Saldar multa de utente
   0 - Sair
-! Escolha uma opção: 3 - Obi-Wan Kenobi - obiwan@jedi.org - NORMAL - ATIVO
+! Escolha uma opção: 2 - Obi-Wan Kenobi - obiwan@jedi.org - NORMAL - ACTIVO
   Menu de Gestão de Utentes
   1 - Registar utente
   2 - Mostrar utente

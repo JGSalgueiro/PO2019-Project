@@ -24,8 +24,8 @@ public class Library implements Serializable {
 
 
   public Library(){
-    _nextWorkId = 1;
-    _nextUserId = 1;
+    _nextWorkId = 0;
+    _nextUserId = 0;
     _userList = new HashMap<Integer,User>();  
     _workList = new HashMap<Integer,Work>();
   }
