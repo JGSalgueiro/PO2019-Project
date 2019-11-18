@@ -28,6 +28,8 @@ public class DoRegisterUser extends Command<LibraryManager> {
     _form.parse();
     try{
       _receiver.registerUser(_uName.value(), _uMail.value());
+      _display.add(Message.userRegistrationSuccessful(_receiver.getUserNum() - 1));
+      _display.display();
     } catch(NullPointerException e){
       throw new UserRegistrationFailedException(_uName.value(), _uMail.value());
     }

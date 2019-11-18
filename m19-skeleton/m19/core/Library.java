@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Class that represents the library as a whole.
  */
@@ -64,7 +63,7 @@ public class Library implements Serializable {
    }
 
   void addUser(User u){
-    _userList.put(_nextWorkId,u);
+    _userList.put(_nextUserId,u);
     _nextUserId++;
   }
 

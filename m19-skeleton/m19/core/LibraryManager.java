@@ -61,6 +61,10 @@ public class LibraryManager {
     return w;
   }
 
+  public int getUserNum(){
+    return _library.getNextUserId();
+  }
+
   public int getWorksNum(){
     return _library.getNextWorkId();
   }

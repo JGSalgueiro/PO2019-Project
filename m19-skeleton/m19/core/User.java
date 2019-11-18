@@ -1,16 +1,14 @@
 package m19.core;
 import java.util.*;
 import m19.core.*;
+import java.io.Serializable;
 
-
-public class User{
+public class User implements Serializable{
+	private static final Long serialVersionUID = 201901101348L;
 	private final int _userID;
 	private final String _name;
 	private String _email;
 	private UserBehaviour _behaviour;
-	private int _numReqWorks;
-	private ArrayList<Work> _reqWorks;
-	private ArrayList<Request> _requests;
 	private boolean _isSuspended;
 	private int _deliveredOnTime;
 	private int _fine;
@@ -19,13 +17,10 @@ public class User{
 		_userID = uID;
 		_name = uName;
 		_email = uEmail;
-		_numReqWorks = 0;
 		_deliveredOnTime = 0;
 		_isSuspended = false;
 		_fine = 0;
 		_behaviour = UserBehaviour.DEFAULT;
-		_reqWorks = new ArrayList<Work>();	
-		_requests = new ArrayList<Request>();	
 	}
 
 	public int getUserID(){
@@ -42,10 +37,6 @@ public class User{
 
 	public int getFine(){
 		return _fine;
-	}
-
-	public int getNumReqWorks(){
-		return _reqWorks.size();
 	}
 
 	/**
@@ -79,20 +70,9 @@ public class User{
 		return null;
 	}
 
-	public ArrayList<Work> getReqWorks(){
-		return _reqWorks;
-	}
 
 	public Boolean getIsSuspended(){
 		return _isSuspended;
-	}
-
-	void pickUpWork(Work w){
-		_reqWorks.add(w);
-	}
-
-	void returnWork(Work w){
-		_reqWorks.remove(w);
 	}
 
 	void lateReturn(int fine){

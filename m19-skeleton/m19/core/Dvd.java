@@ -20,7 +20,7 @@ public class Dvd extends Work{
 	}
 
 	public String getType(){
-		return "Dvd";
+		return "DVD";
 	}
 
 }

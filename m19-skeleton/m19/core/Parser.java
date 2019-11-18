@@ -48,8 +48,9 @@ public class Parser {
   }
 
   private void parseDVD(String[] components, String line) throws BadEntrySpecificationException {
-    if (components.length != 7)
+    if (components.length != 7){
       throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
+    }
     int wId = _library.getNextWorkId();
     Dvd dvd = new Dvd(wId, components[1], Integer.parseInt(components[3]), Integer.parseInt(components[6]),
                        components[2], components[5],components[4]);
@@ -57,8 +58,9 @@ public class Parser {
   }
 
   private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
-    if (components.length != 7)
+    if (components.length != 7){
       throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
+    }
     int wId = _library.getNextWorkId();
     Book book = new Book(wId, components[1], Integer.parseInt(components[3]), Integer.parseInt(components[6]),
                        components[2], components[5], components[4]);
@@ -66,12 +68,11 @@ public class Parser {
   }
 
   private void parseUser(String[] components, String line) throws BadEntrySpecificationException {
-    if (components.length != 3)
+    if (components.length != 3){
       throw new BadEntrySpecificationException("Wrong number of fields (2) in " + line);
+    }
     int uId = _library.getNextUserId();
     User user = new User(uId,components[1],components[2]);
     _library.addUser(user);
-
-    // Pode ser necessário ter um try-catch adicional neste método
   }
  }

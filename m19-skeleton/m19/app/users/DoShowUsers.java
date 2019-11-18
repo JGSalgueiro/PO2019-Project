@@ -39,8 +39,7 @@ public class DoShowUsers extends Command<LibraryManager> {
       else if (isSuspended == true) {
         _display.addLine(id + " - " + name + " - " + email + " - " + behaviour + " - SUSPENSO" + " - EUR " + fine);
       }
-    _display.display();
-    _display.clear();
     }
+    _display.display();
   }
 }

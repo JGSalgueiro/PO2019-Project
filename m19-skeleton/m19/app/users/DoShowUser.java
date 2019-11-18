@@ -37,12 +37,10 @@ public class DoShowUser extends Command<LibraryManager> {
       if(isSuspended == false){
         _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - ACTIVO");
         _display.display();
-        _display.clear();
       }
       else if (isSuspended == true) {
         _display.add(id + " - " + name + " - " + email + " - " + behaviour + " - SUSPENSO" + " - EUR " + fine);
         _display.display();
-        _display.clear();
       }
     }catch(NullPointerException e){
       throw new NoSuchUserException(_id.value());

@@ -39,6 +39,5 @@ public class DoDisplayWorks extends Command<LibraryManager> {
                       " - " + cat + " - " + creator + " - " + typeId);
     }
     _display.display();
-    _display.clear();
   }
 }

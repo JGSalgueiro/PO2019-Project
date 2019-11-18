@@ -43,7 +43,6 @@ public class DoDisplayWork extends Command<LibraryManager> {
       _display.add(id + " - " + aCopies + " de " + copies + " - " + type + " - " + title + " - " + price + 
                       " - " + cat + " - " + creator + " - " + typeId);
       _display.display();
-      _display.clear();
     }catch(NullPointerException e){
       throw new NoSuchWorkException(id);
     }
