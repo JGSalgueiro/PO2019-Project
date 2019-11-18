@@ -1,6 +1,8 @@
 package m19.core;
 
-public class Book extends Work{
+import java.io.Serializable;
+
+public class Book extends Work implements Serializable{
 	private final String _author;
 	private final String _isbn;
 

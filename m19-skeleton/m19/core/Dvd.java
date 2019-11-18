@@ -1,6 +1,8 @@
 package m19.core;
 
-public class Dvd extends Work{
+import java.io.Serializable;
+
+public class Dvd extends Work implements Serializable{
 	private final String _director;
 	private final String _igac;
 

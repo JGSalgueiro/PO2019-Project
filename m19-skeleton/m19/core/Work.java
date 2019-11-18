@@ -1,7 +1,8 @@
 package m19.core;
 import java.util.*;
+import java.io.Serializable;
 
-public abstract class Work{
+public abstract class Work implements Serializable{
 	private final int _workID;
 	private final String _title;
 	private int _price;
