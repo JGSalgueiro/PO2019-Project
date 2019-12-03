@@ -19,13 +19,15 @@ public class Library implements Serializable {
   private int _nextWorkId;
   private HashMap<Integer,User> _userList; 
   private HashMap<Integer,Work> _workList;
-
+  private HashMap<Integer,Requests> _requestList;
 
   public Library(){
     _nextWorkId = 0;
     _nextUserId = 0;
+    _nextReqId = 0;
     _userList = new HashMap<Integer,User>();  
     _workList = new HashMap<Integer,Work>();
+    _requestList = new HashMap<Integer,Requests>();
   }
 
   int getNextWorkId(){
@@ -52,15 +54,25 @@ public class Library implements Serializable {
     return _workList;
   }
 
+  HashMap<Integer,Requests> getAllRequests(){
+    return _requestList;
+  }
+
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
     _userList.put(_nextUserId, u);
     _nextUserId++;
+
    }
 
+//ADD ARE USELESS??????????
   void addUser(User u){
     _userList.put(_nextUserId,u);
     _nextUserId++;
+  }
+
+  void addRequest(Request req){
+    _requestList.put(_)
   }
 
   void addBook(Book b){
@@ -85,6 +97,12 @@ public class Library implements Serializable {
     _nextWorkId++;
   }
 
+  void createRequest(int deadline, int userId, int workId){ //THINK BETTER
+    Request r = new Request(_nextReqId, deadline, userId, workId);
+    _requestList.put(_nextReqId, r);
+    _nextReqId++;
+  }
+
   User findUserbyId(int id){
     User u = _userList.get(id);
     return u;
@@ -93,6 +111,11 @@ public class Library implements Serializable {
   Work findWorkbyId(int id){
     Work w = _workList.get(id);
     return w;
+  }
+
+  Request findRequestbyId(int id){
+    Request r = _requestList.get(id);
+    return r;
   }
   
   /**

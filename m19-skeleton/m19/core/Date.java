@@ -20,6 +20,8 @@ public class Date implements Serializable{
 	}
 
 	public void advanceTime(int dateDif){
-		_currentTime += dateDif;
+		if(dateDif > 0){
+			_currentTime += dateDif;
+		}
 	}
 }

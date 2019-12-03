@@ -22,7 +22,7 @@ public class LibraryManager {
 
   public LibraryManager(){
     _library = new Library();
-    _date = new Date(0);
+    _date = new Date(1);
     _filename = null;
   }
   

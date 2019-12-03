@@ -75,6 +75,13 @@ public class User implements Serializable{
 		return null;
 	}
 
+	void workDeliveredOnTime(){
+		_deliveredOnTime++;
+	}
+
+	void payFine(){
+		_fine = 0;
+	}
 
 	Boolean getIsSuspended(){
 		return _isSuspended;
