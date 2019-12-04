@@ -17,6 +17,7 @@ public class User implements Serializable{
 	private boolean _isSuspended;
 	private int _deliveredOnTime;
 	private int _fine;
+	private List<Request> _requests;
 
 	public User(int uID, String uName, String uEmail){
 		_userID = uID;
@@ -25,7 +26,8 @@ public class User implements Serializable{
 		_deliveredOnTime = 0;
 		_isSuspended = false;  
 		_fine = 0;
-		_behaviour = UserBehaviour.DEFAULT;
+		_behaviour = new Default();
+		_requests = new ArrayList<Request>();
 	}
 
 	public int getUserID(){
@@ -44,35 +46,16 @@ public class User implements Serializable{
 		return _fine;
 	}
 
-	/**
-	* Returns the max num of Reqs possible
-	**/
-	int canReqNum(){
-		if(_behaviour == UserBehaviour.DEFAULT){
-			return 3;
-		}
-		else if (_behaviour == UserBehaviour.FAULTY){
-			return 1;	
-		}
-		else if (_behaviour == UserBehaviour.ABIDING){
-			return 5;
-		}
-
-		return 0;
+	int getNumRequests(){
+		return _requests.size();
 	}
 
-	String getUserBehaviour(){
-		if(_behaviour == UserBehaviour.DEFAULT){
-			return "NORMAL";
-		}
-		else if (_behaviour == UserBehaviour.FAULTY){
-			return "FALTOSO";	
-		}
-		else if (_behaviour == UserBehaviour.ABIDING){
-			return "CUMPRIDOR";
-		}
+	int getMaxRequests(){
+		return _behaviour.maxRequests();
+	}
 
-		return null;
+	String getBehaviour(){
+		return _behaviour.getBehaviour();
 	}
 
 	void workDeliveredOnTime(){
@@ -93,11 +76,30 @@ public class User implements Serializable{
 
 	public String toString(){
 		if(_isSuspended == false){
-			return(_userID + " - " + _name + " - " + _email + " - " + getUserBehaviour() + " - ACTIVO");
+			return(_userID + " - " + _name + " - " + _email + " - " + _behaviour.getBehaviour() + " - ACTIVO");
 		}
 		else if(_isSuspended == true){
-			return(_userID + " - " + _name + " - " + _email + " - " + getUserBehaviour() + " - SUSPENSO" + " - EUR " + _fine);
+			return(_userID + " - " + _name + " - " + _email + " - " + _behaviour.getBehaviour() + " - SUSPENSO" + " - EUR " + _fine);
 		}
 	return null;
 	}
+
+	void makeRequest(Request req){
+		_requests.add(req);
+	}
+
+	void removeRequest(Request req){
+		_requests.remove(req);
+	}
+
+	Boolean workIsRequested(int wId){
+		for(Request r : _requests){
+			if(r.getWork().getWorkID() == wId){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 }

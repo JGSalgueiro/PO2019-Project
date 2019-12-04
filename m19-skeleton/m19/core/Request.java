@@ -4,24 +4,24 @@ import m19.core.*;
 import java.io.Serializable;
 
 public class Request{
-	private int _reqId;
 	private int _deadline;
-	private int _userId;
-	private int _workId;
+	private User _user;
+	private Work _work;
+	private Boolean _isAtended;
 
-	public Request(int reqId, int r_deadline, int r_userId, int r_workId){
-		_reqId = reqId;
+	public Request(int r_deadline, User r_user, Work r_work){
 		_deadline = r_deadline;
-		_userId = r_userId;
-		_workId = r_workId;
+		_user = r_user;
+		_work = r_work;
+		_isAtended = false;
 	}
 
-	int getUserId(){
-		return _userId;
+	User getUser(){
+		return _user;
 	}
 
-	int getWorkId(){
-		return _workId;
+	Work getWork(){
+		return _work;
 	}
 
 	int getDeadline(){

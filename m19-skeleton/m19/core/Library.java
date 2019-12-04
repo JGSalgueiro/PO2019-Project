@@ -19,19 +19,28 @@ public class Library implements Serializable {
   private int _nextWorkId;
   private HashMap<Integer,User> _userList; 
   private HashMap<Integer,Work> _workList;
-  private HashMap<Integer,Requests> _requestList;
+  private List<Request> _pendingRequests;
+  private List<Request> _atendedRequests;
+  private List<Rules> _rules;
 
   public Library(){
     _nextWorkId = 0;
     _nextUserId = 0;
-    _nextReqId = 0;
     _userList = new HashMap<Integer,User>();  
     _workList = new HashMap<Integer,Work>();
-    _requestList = new HashMap<Integer,Requests>();
+    _pendingRequests = new ArrayList<Request>();
+    _atendedRequests = new ArrayList<Request>();
+    _rules = new ArrayList<Rules>();
+    _rules.add(new CheckSameReqTwice());
+    _rules.add(new CheckUserSuspended());
+    _rules.add(new CheckAvailableCopies());
+    _rules.add(new CheckNumMaxReqs());
+    _rules.add(new CheckReferenceWork());
+    _rules.add(new CheckPrice());
   }
 
   int getNextWorkId(){
-    return _nextWorkId;
+    return _nextWorkId; 
   }
 
   int getNextUserId(){
@@ -54,8 +63,8 @@ public class Library implements Serializable {
     return _workList;
   }
 
-  HashMap<Integer,Requests> getAllRequests(){
-    return _requestList;
+  List<Request> getAllPendingRequests(){
+    return _pendingRequests;
   }
 
   void createUser(String uName, String uMail){
@@ -65,14 +74,17 @@ public class Library implements Serializable {
 
    }
 
-//ADD ARE USELESS??????????
   void addUser(User u){
     _userList.put(_nextUserId,u);
     _nextUserId++;
   }
 
-  void addRequest(Request req){
-    _requestList.put(_)
+  void attendRequest(Request req){
+    _atendedRequests.add(req);
+  }
+
+  void waitForWork(Request req){
+    _pendingRequests.add(req);
   }
 
   void addBook(Book b){
@@ -97,10 +109,30 @@ public class Library implements Serializable {
     _nextWorkId++;
   }
 
-  void createRequest(int deadline, int userId, int workId){ //THINK BETTER
-    Request r = new Request(_nextReqId, deadline, userId, workId);
-    _requestList.put(_nextReqId, r);
-    _nextReqId++;
+  int verifyReq(User u, Work w){
+    int i = 1;
+    for(Rules r : _rules){
+      if(!r.rule(u, w)){
+        return i;
+      }
+      i++;
+    }
+    return 0;
+  } 
+
+//FIXME -------------------------------
+  void createRequest(int deadline, User u, Work w){ 
+    int res = verifyReq(u, w);
+    if(res == 0){
+      Request r = new Request(deadline, u, w);
+      _atendedRequests.add(r);
+    }
+    else if(res == 3){
+      Request r = new Request(deadline, u, w);
+      _pendingRequests.add(r);
+      //notificacao (pergunta)
+      //notificacao (se sim, notifica)
+    }
   }
 
   User findUserbyId(int id){
@@ -113,8 +145,8 @@ public class Library implements Serializable {
     return w;
   }
 
-  Request findRequestbyId(int id){
-    Request r = _requestList.get(id);
+  Request findPendingRequestbyId(int id){
+    Request r = _pendingRequests.get(id);
     return r;
   }
   
@@ -147,6 +179,8 @@ public class Library implements Serializable {
         return null;
     }
   }
+
+
 
   /**
    * Read the text input file at the beginning of the program and populates the

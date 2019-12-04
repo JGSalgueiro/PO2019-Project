@@ -19,11 +19,13 @@ public class LibraryManager {
   private Library _library;  
   private Date _date;
   private String _filename;
+  private Rules _rules;
 
   public LibraryManager(){
     _library = new Library();
     _date = new Date(1);
     _filename = null;
+    _rules = null;
   }
   
   public HashMap<Integer,User> getAllUsers(){
@@ -84,6 +86,10 @@ public class LibraryManager {
 
   public String getFilename(){
     return _filename;
+  }
+
+  public void requestWork(User u, Work w){
+    //FIXME
   }
 
   /**

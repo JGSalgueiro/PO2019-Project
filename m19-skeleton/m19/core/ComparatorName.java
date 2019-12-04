@@ -1,6 +1,7 @@
 package m19.core;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
 import m19.core.User;
 /** 
  * Compares the Name of 2 Users by alphabetic order
