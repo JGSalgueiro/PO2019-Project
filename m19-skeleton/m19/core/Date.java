@@ -11,8 +11,8 @@ public class Date implements Serializable{
 
 	private int _currentTime;
 
-	public Date(int d){
-		_currentTime = d;
+	public Date(){
+		_currentTime = 0;
 	}
 
 	public int getTime(){

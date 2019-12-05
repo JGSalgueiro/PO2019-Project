@@ -9,6 +9,10 @@ import java.io.FileOutputStream;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
+import m19.app.exception.RuleFailedException;
+import m19.app.exception.NoSuchUserException;
+import m19.app.exception.NoSuchWorkException;
+
 import java.util.HashMap;
 
 
@@ -23,7 +27,7 @@ public class LibraryManager {
 
   public LibraryManager(){
     _library = new Library();
-    _date = new Date(1);
+    _date = new Date();
     _filename = null;
     _rules = null;
   }
@@ -88,8 +92,20 @@ public class LibraryManager {
     return _filename;
   }
 
-  public void requestWork(User u, Work w){
-    //FIXME
+  public int requestWork(int uId, int wId) throws RuleFailedException, NoSuchUserException, NoSuchWorkException{
+    User u = getUser(uId);
+    Work w = getWorkbyId(wId);
+
+    if(u == null){
+      throw new NoSuchUserException(uId);
+    }
+
+    if(w == null){
+      throw new NoSuchWorkException(wId);
+    }
+
+    int res = _library.createRequest(u, w, _date.getTime());
+    return res;
   }
 
   /**

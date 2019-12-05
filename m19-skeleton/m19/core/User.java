@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Class that represents a User of the Library.
  */
-public class User implements Serializable{
+public class User implements Serializable, Observer{
 	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
 
@@ -18,6 +18,7 @@ public class User implements Serializable{
 	private int _deliveredOnTime;
 	private int _fine;
 	private List<Request> _requests;
+	private List<Notification> _notification;
 
 	public User(int uID, String uName, String uEmail){
 		_userID = uID;
@@ -28,6 +29,7 @@ public class User implements Serializable{
 		_fine = 0;
 		_behaviour = new Default();
 		_requests = new ArrayList<Request>();
+		_notification = new ArrayList<Notification>();
 	}
 
 	public int getUserID(){
@@ -101,5 +103,12 @@ public class User implements Serializable{
 		return false;
 	}
 
+	@Override
+	public void update(Notification n){
+		_notification.add(n);
+	}
 
+	public List<Notification> getNotification(){
+		return _notification;
+	}
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.IOException;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
+import m19.app.exception.RuleFailedException;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,7 +112,8 @@ public class Library implements Serializable {
 
   /**
    * Verifys all Check rules for Requisitions in Order 
-   * Returns 3 if the Work has no available Copies
+   * Returns the number of the Rule it failed
+   * If no rule fails returns 0
    **/
   int verifyReq(User u, Work w){
     int i = 1;
@@ -158,23 +160,26 @@ public class Library implements Serializable {
     return -1;
   }
 
-//FIXME -------------------------------
-  void createRequest(User u, Work w){ 
+  int createRequest(User u, Work w, int date) throws RuleFailedException{ 
     int res = verifyReq(u, w);
     if(res == 0){
-      int deadline = atributeReturnDate(u, w);
+      int deadline = atributeReturnDate(u, w) + date;
       Request r = new Request(deadline, u, w);
       _atendedRequests.add(r);
       u.makeRequest(r);
-      w.requestWork(r);    
+      w.removeAvailableCopies();
+      return deadline;    
     }
     else if(res == 3){
-      //notificacao (pergunta)
-      //notificacao (se sim, notifica) --> GUARDA A REQ NAS REQS N ATENDIDAS
+      return -1;
     }
+    throw new RuleFailedException(u.getUserID(), w.getWorkID(), res);
   }
 
-
+//FIXME DAWG
+  void returnWork(User u, Work w){
+    w.notificationReq();
+  }
 
   User findUserbyId(int id){
     User u = _userList.get(id);
@@ -220,8 +225,6 @@ public class Library implements Serializable {
         return null;
     }
   }
-
-
 
   /**
    * Read the text input file at the beginning of the program and populates the

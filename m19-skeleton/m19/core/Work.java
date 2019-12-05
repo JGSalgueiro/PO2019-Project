@@ -1,11 +1,13 @@
 package m19.core;
+
+import m19.core.*;
 import java.util.*;
 import java.io.Serializable;
 
 /**
  * Abstract Class that represents a Generic Work (DVD or Book).
  */
-public abstract class Work implements Serializable{
+public abstract class Work extends Observable implements Serializable{
 	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
 
@@ -15,7 +17,8 @@ public abstract class Work implements Serializable{
 	private int _copies;
 	private int _availableCopies;
 	private Category _category;
-	private List<Request> _requestedWorks;
+	private List<Observer> _reqUsers;
+  	private List<Observer> _retUsers;
 
 	public Work(int wID, String wTitle ,int wPrice ,int wCopies ,String cat){
 		_workID = wID;
@@ -35,7 +38,7 @@ public abstract class Work implements Serializable{
 		else{
 			_category = null;
 		}
-		_requestedWorks = new ArrayList<Request>();
+		//_requestedWorks = new ArrayList<Request>();
 	}
 
 	int getWorkID(){
@@ -82,15 +85,44 @@ public abstract class Work implements Serializable{
 		return null;
 	}
 
-	void requestWork(Request r){
+	/*void requestWork(Request r){
 		_requestedWorks.add(r);
 		_availableCopies--;
 	}
 
 	void returnWork(){
 		
+	}*/
+
+	void addUserReq(Observer o){
+		_retUsers.add(o);
+	}
+	
+	void removeUserReq(Observer o){
+		_retUsers.remove(o);
+	}
+	
+	void notificationReq(){
+		for (Observer o : _retUsers) {
+			o.update(new Notification(("REQUISIÇÃO: " + toString())));
+		}
+	}
+	
+	void addUserRet(Observer o){
+		_reqUsers.add(o);
+	}
+	
+	void removeUserRet(Observer o){
+		_reqUsers.remove(o);
+	}
+	
+	void notificationRet(){
+		for (Observer o : _reqUsers) {
+			o.update(new Notification(("ENTREGA: " + toString())));
+		}
 	}
 
+	
 	abstract String getType();
 
 	abstract String getTypeId();
