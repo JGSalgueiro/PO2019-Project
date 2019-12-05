@@ -5,7 +5,7 @@ public class CheckNumMaxReqs implements Rules{
 
 	@Override
 	public Boolean rule(User u, Work w){
-		if(u.getNumRequests() - u.getMaxRequests() == 0){
+		if(u.getMaxRequests() - u.getNumRequests() == 0){
 			return false;
 		}
 

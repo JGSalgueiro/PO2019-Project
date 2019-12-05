@@ -15,6 +15,7 @@ public abstract class Work implements Serializable{
 	private int _copies;
 	private int _availableCopies;
 	private Category _category;
+	private List<Request> _requestedWorks;
 
 	public Work(int wID, String wTitle ,int wPrice ,int wCopies ,String cat){
 		_workID = wID;
@@ -34,6 +35,7 @@ public abstract class Work implements Serializable{
 		else{
 			_category = null;
 		}
+		_requestedWorks = new ArrayList<Request>();
 	}
 
 	int getWorkID(){
@@ -78,6 +80,15 @@ public abstract class Work implements Serializable{
 		}
 
 		return null;
+	}
+
+	void requestWork(Request r){
+		_requestedWorks.add(r);
+		_availableCopies--;
+	}
+
+	void returnWork(){
+		
 	}
 
 	abstract String getType();

@@ -109,6 +109,10 @@ public class Library implements Serializable {
     _nextWorkId++;
   }
 
+  /**
+   * Verifys all Check rules for Requisitions in Order 
+   * Returns 3 if the Work has no available Copies
+   **/
   int verifyReq(User u, Work w){
     int i = 1;
     for(Rules r : _rules){
@@ -120,20 +124,57 @@ public class Library implements Serializable {
     return 0;
   } 
 
+  int atributeReturnDate(User u, Work w){
+    if(u.getBehaviour().equals("FALTOSO")){
+      return 2;
+    }
+
+    if(w.getAvailableCopies() == 1){
+      if(u.getBehaviour().equals("NORMAL")){
+        return 3;
+      }
+      if(u.getBehaviour().equals("CUMPRIDOR")){
+        return 5;
+      }
+    }
+
+    else if(w.getAvailableCopies() < 5){
+      if(u.getBehaviour().equals("NORMAL")){
+        return 8;
+      }
+      if(u.getBehaviour().equals("CUMPRIDOR")){
+        return 15;
+      }
+    }
+
+    else{
+      if(u.getBehaviour().equals("NORMAL")){
+        return 15;
+      }
+      if(u.getBehaviour().equals("CUMPRIDOR")){
+        return 30;
+      }
+    }
+    return -1;
+  }
+
 //FIXME -------------------------------
-  void createRequest(int deadline, User u, Work w){ 
+  void createRequest(User u, Work w){ 
     int res = verifyReq(u, w);
     if(res == 0){
+      int deadline = atributeReturnDate(u, w);
       Request r = new Request(deadline, u, w);
       _atendedRequests.add(r);
+      u.makeRequest(r);
+      w.requestWork(r);    
     }
     else if(res == 3){
-      Request r = new Request(deadline, u, w);
-      _pendingRequests.add(r);
       //notificacao (pergunta)
-      //notificacao (se sim, notifica)
+      //notificacao (se sim, notifica) --> GUARDA A REQ NAS REQS N ATENDIDAS
     }
   }
+
+
 
   User findUserbyId(int id){
     User u = _userList.get(id);
