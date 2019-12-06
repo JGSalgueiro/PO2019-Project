@@ -20,8 +20,8 @@ public class Library implements Serializable {
   private int _nextWorkId;
   private HashMap<Integer,User> _userList; 
   private HashMap<Integer,Work> _workList;
-  private List<Request> _pendingRequests;
-  private List<Request> _atendedRequests;
+  //private List<Request> _pendingRequests;
+  private List<Request> _requests;//atendedRequests
   private List<Rules> _rules;
 
   public Library(){
@@ -29,8 +29,8 @@ public class Library implements Serializable {
     _nextUserId = 0;
     _userList = new HashMap<Integer,User>();  
     _workList = new HashMap<Integer,Work>();
-    _pendingRequests = new ArrayList<Request>();
-    _atendedRequests = new ArrayList<Request>();
+    //_pendingRequests = new ArrayList<Request>();
+    _requests = new ArrayList<Request>();
     _rules = new ArrayList<Rules>();
     _rules.add(new CheckSameReqTwice());
     _rules.add(new CheckUserSuspended());
@@ -64,9 +64,9 @@ public class Library implements Serializable {
     return _workList;
   }
 
-  List<Request> getAllPendingRequests(){
+  /*List<Request> getAllPendingRequests(){
     return _pendingRequests;
-  }
+  }*/
 
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
@@ -81,12 +81,12 @@ public class Library implements Serializable {
   }
 
   void attendRequest(Request req){
-    _atendedRequests.add(req);
+    _requests.add(req);
   }
 
-  void waitForWork(Request req){
+  /*void waitForWork(Request req){
     _pendingRequests.add(req);
-  }
+  }*/
 
   void addBook(Book b){
     _workList.put(_nextWorkId, b);
@@ -162,10 +162,11 @@ public class Library implements Serializable {
 
   int createRequest(User u, Work w, int date) throws RuleFailedException{ 
     int res = verifyReq(u, w);
-    if(res == 0){
+    if(res == 0 && u.getIsSuspended() == false){
       int deadline = atributeReturnDate(u, w) + date;
+      System.out.println("cona");
       Request r = new Request(deadline, u, w);
-      _atendedRequests.add(r);
+      _requests.add(r);
       u.makeRequest(r);
       w.removeAvailableCopies();
       return deadline;    
@@ -177,8 +178,32 @@ public class Library implements Serializable {
   }
 
 //FIXME DAWG
-  void returnWork(User u, Work w){
+  int returnW(User u, Work w, int date){
     w.notificationReq();
+    for(Request r : _requests){
+      if(r.getUser() == u && r.getWork() == w){
+        Request ret = r;
+        int deadline = ret.getDeadline();
+        w.addAvailableCopies(1);
+        u.deleteRequests(ret);
+        _requests.remove(ret);
+        if(deadline <= date){
+          u.workDeliveredOnTime();
+        }
+        else if(deadline > date){
+          u.workNotDeliveredOnTime();
+        }
+        u.checkStreak();
+        return u.getFine();
+      }
+    }
+    return -1;
+  }
+
+  void updateRequests(int date){
+    for(Request r : _requests){
+      r.updateReq(date);
+    }
   }
 
   User findUserbyId(int id){
@@ -191,10 +216,10 @@ public class Library implements Serializable {
     return w;
   }
 
-  Request findPendingRequestbyId(int id){
+  /*Request findPendingRequestbyId(int id){
     Request r = _pendingRequests.get(id);
     return r;
-  }
+  }*/
   
   /**
   * Search Parameter : Title of the Work

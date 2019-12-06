@@ -56,6 +56,10 @@ public class User implements Serializable, Observer{
 		return _behaviour.maxRequests();
 	}
 
+	void deleteRequests(Request r){
+		_requests.remove(r);
+	}
+
 	String getBehaviour(){
 		return _behaviour.getBehaviour();
 	}
@@ -64,16 +68,40 @@ public class User implements Serializable, Observer{
 		_deliveredOnTime++;
 	}
 
-	void payFine(){
+	void workNotDeliveredOnTime(){
+		_deliveredOnTime--;
+	}
+
+	void setWorkDeliveredOnTime(int n){
+		_deliveredOnTime = n;
+	}
+
+	void checkStreak(){
+		if(_deliveredOnTime == -3){
+			_behaviour = new Faulty();
+		}
+		if(_deliveredOnTime == 5){
+			_behaviour = new Abiding();
+		}
+		if(_deliveredOnTime == 3){
+			_behaviour = new Default();
+		}
+	}
+
+	void pay(){
 		_fine = 0;
+	}
+
+	void setFine(int f){
+		_fine += f;
 	}
 
 	Boolean getIsSuspended(){
 		return _isSuspended;
 	}
 
-	void suspendUser(){
-		_isSuspended = true;
+	void setSuspension(Boolean b){
+		_isSuspended = b;
 	}
 
 	public String toString(){
@@ -101,6 +129,16 @@ public class User implements Serializable, Observer{
 			}
 		}
 		return false;
+	}
+
+	int checkPassedDeadline(){
+		int i = 0;
+		for(Request r : _requests){
+			if(r.getIsFaulty()){
+				i++;
+			}
+		}
+		return i;
 	}
 
 	@Override

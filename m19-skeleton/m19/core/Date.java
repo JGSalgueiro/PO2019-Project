@@ -15,11 +15,11 @@ public class Date implements Serializable{
 		_currentTime = 0;
 	}
 
-	public int getTime(){
+	int getTime(){
 		return _currentTime;
 	}
 
-	public void advanceTime(int dateDif){
+	void advanceTime(int dateDif){
 		if(dateDif > 0){
 			_currentTime += dateDif;
 		}

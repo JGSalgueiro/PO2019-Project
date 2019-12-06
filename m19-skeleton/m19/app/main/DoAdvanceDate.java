@@ -24,7 +24,6 @@ public class DoAdvanceDate extends Command<LibraryManager> {
   @Override
   public final void execute() {
     _form.parse();
-    Date date = _receiver.getDate();
-    date.advanceTime(_time.value());
+    _receiver.advanceDate(_time.value());
   } 
 }

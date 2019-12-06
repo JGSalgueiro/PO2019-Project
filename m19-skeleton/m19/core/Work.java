@@ -26,6 +26,8 @@ public abstract class Work extends Observable implements Serializable{
 		_price = wPrice;
 		_copies = wCopies;
 		_availableCopies = wCopies;
+		_reqUsers = new ArrayList<Observer>();
+		_retUsers = new ArrayList<Observer>();
 		if(cat.equals("SCITECH")){
 			_category = Category.SCITECH;
 		}
@@ -95,29 +97,29 @@ public abstract class Work extends Observable implements Serializable{
 	}*/
 
 	void addUserReq(Observer o){
-		_retUsers.add(o);
+		_reqUsers.add(o);
 	}
 	
 	void removeUserReq(Observer o){
-		_retUsers.remove(o);
+		_reqUsers.remove(o);
 	}
 	
 	void notificationReq(){
-		for (Observer o : _retUsers) {
+		for (Observer o : _reqUsers) {
 			o.update(new Notification(("REQUISIÇÃO: " + toString())));
 		}
 	}
 	
 	void addUserRet(Observer o){
-		_reqUsers.add(o);
+		_retUsers.add(o);
 	}
 	
 	void removeUserRet(Observer o){
-		_reqUsers.remove(o);
+		_retUsers.remove(o);
 	}
 	
 	void notificationRet(){
-		for (Observer o : _reqUsers) {
+		for (Observer o : _retUsers) {
 			o.update(new Notification(("ENTREGA: " + toString())));
 		}
 	}

@@ -39,9 +39,14 @@ public class DoRequestWork extends Command<LibraryManager> {
         _display.popup(Message.workReturnDay(_wId.value(), returnValue));
       }
       else{
+      	int uId = _uId.value();
+      	int wId = _wId.value();
         _form.clear();
         _wantsInfo = _form.addStringInput(Message.requestReturnNotificationPreference());
         _form.parse();
+        if(_wantsInfo.value().equals("s")){
+        	_receiver.addUserReq(uId, wId);
+        }
       }
     }
   }

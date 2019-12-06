@@ -12,6 +12,7 @@ import m19.core.exception.ImportFileException;
 import m19.app.exception.RuleFailedException;
 import m19.app.exception.NoSuchUserException;
 import m19.app.exception.NoSuchWorkException;
+import m19.app.exception.WorkNotBorrowedByUserException;
 
 import java.util.HashMap;
 
@@ -84,8 +85,13 @@ public class LibraryManager {
     return _library.getNextWorkId();
   }
 
-  public Date getDate(){
-    return _date;
+  public int getDate(){
+    return _date.getTime();
+  }
+
+  public void advanceDate(int dateDif){
+    _date.advanceTime(dateDif);
+    _library.updateRequests(_date.getTime());
   }
 
   public String getFilename(){
@@ -106,6 +112,41 @@ public class LibraryManager {
 
     int res = _library.createRequest(u, w, _date.getTime());
     return res;
+  }
+
+  public void addUserReq(int uId, int wId){
+    User u = getUser(uId);
+    Work w = getWorkbyId(wId);
+    w.addUserReq(u);
+  }
+
+  public int returnWork(int uId, int wId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
+    User u = getUser(uId);
+    Work w = getWorkbyId(wId);
+
+    if(u == null){
+      throw new NoSuchUserException(uId);
+    }
+
+    if(w == null){
+      throw new NoSuchWorkException(wId);
+    }
+
+    if(!u.workIsRequested(wId)){
+      throw new WorkNotBorrowedByUserException(wId, uId);
+    }
+    
+    int res = _library.returnW(u, w, _date.getTime());
+    return res;
+  }
+
+  public void payFine(int uId) throws NoSuchUserException{
+    User u = getUser(uId);
+    u.pay();
+    int faulty = u.checkPassedDeadline();
+    if(faulty == 0){
+      u.setSuspension(false);
+    }
   }
 
   /**
