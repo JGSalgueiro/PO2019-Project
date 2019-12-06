@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.List;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
@@ -13,7 +14,8 @@ import m19.app.exception.RuleFailedException;
 import m19.app.exception.NoSuchUserException;
 import m19.app.exception.NoSuchWorkException;
 import m19.app.exception.WorkNotBorrowedByUserException;
-
+import m19.app.exception.UserIsActiveException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -140,13 +142,41 @@ public class LibraryManager {
     return res;
   }
 
-  public void payFine(int uId) throws NoSuchUserException{
-    User u = getUser(uId);
-    u.pay();
-    int faulty = u.checkPassedDeadline();
-    if(faulty == 0){
-      u.setSuspension(false);
+  public void payFine(int uId) throws NoSuchUserException, UserIsActiveException{
+    try{
+      User u = getUser(uId);
+      if(!u.getIsSuspended()){
+        throw new UserIsActiveException(uId);
+      }
+      int faulty = u.checkPassedDeadline();
+      if(faulty == 0){
+        u.setSuspension(false);
+      }
+      u.pay();
+    }catch(NullPointerException e){
+      throw new NoSuchUserException(uId);
     }
+  }
+
+  public List<Notification> warnUserWhenWorkIsAvailable(int uId) throws NoSuchUserException{
+    try{
+      User u = getUser(uId);
+      return u.getNotification();
+      
+    }catch(NullPointerException e){
+      throw new NoSuchUserException(uId);
+    } 
+  }
+
+  public List<Work> worksSearchedByGivenTerm(String searchTerm){
+    List<Work> arrayWorks = new ArrayList<Work>(getAllWorks().values());
+    List<Work> searchedWorks = new ArrayList<Work>();
+    for(Work w : arrayWorks){
+      if(w.getTitle().indexOf(searchTerm) != -1 || w.getCreator().indexOf(searchTerm) != -1){
+        searchedWorks.add(w);
+      }
+    }
+    return searchedWorks;
   }
 
   /**
@@ -213,6 +243,7 @@ public class LibraryManager {
       objIn = new ObjectInputStream(file);
       _library = (Library)objIn.readObject();
       _date = (Date)objIn.readObject(); 
+      _filename = filename;
 
     } finally {
       if (objIn != null){

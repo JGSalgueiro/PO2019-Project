@@ -1,6 +1,7 @@
 package m19.core;
-import java.util.*;
-import m19.core.*;
+
+import java.util.List;
+import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
@@ -70,10 +71,6 @@ public class User implements Serializable, Observer{
 
 	void workNotDeliveredOnTime(){
 		_deliveredOnTime--;
-	}
-
-	void setWorkDeliveredOnTime(int n){
-		_deliveredOnTime = n;
 	}
 
 	void checkStreak(){
@@ -146,7 +143,7 @@ public class User implements Serializable, Observer{
 		_notification.add(n);
 	}
 
-	public List<Notification> getNotification(){
+	List<Notification> getNotification(){
 		return _notification;
 	}
 }

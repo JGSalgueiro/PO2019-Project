@@ -1,6 +1,9 @@
 package m19.core;
-import m19.core.User;
+import java.io.Serializable;
 
-public interface Rules{
-	Boolean rule(User u, Work w);
+public abstract class Rules implements Serializable{
+	/** Serial number for serialization. */
+	private static final Long serialVersionUID = 201901101348L;
+
+	abstract Boolean rule(User u, Work w);
 }

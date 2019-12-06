@@ -23,31 +23,32 @@ public class DoRequestWork extends Command<LibraryManager> {
    */
   public DoRequestWork(LibraryManager receiver) {
     super(Label.REQUEST_WORK, receiver);
-    _uId = _form.addIntegerInput(Message.requestUserId());
-    _wId = _form.addIntegerInput(Message.requestWorkId());
   }
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
   public final void execute() throws DialogException {
-    _form.parse();
+    try{
+      _uId = _form.addIntegerInput(Message.requestUserId());
+      _wId = _form.addIntegerInput(Message.requestWorkId());
+      _form.parse();
+      int uId = _uId.value();
+      int wId = _wId.value();
 
-    if(_uId.value() != null && _wId.value() != null){
-      int returnValue = _receiver.requestWork(_uId.value() , _wId.value());
+      int returnValue = _receiver.requestWork(uId , wId);
 
       if(returnValue != -1){
-        _display.popup(Message.workReturnDay(_wId.value(), returnValue));
+        _display.popup(Message.workReturnDay(wId, returnValue));
       }
       else{
-      	int uId = _uId.value();
-      	int wId = _wId.value();
         _form.clear();
         _wantsInfo = _form.addStringInput(Message.requestReturnNotificationPreference());
         _form.parse();
         if(_wantsInfo.value().equals("s")){
-        	_receiver.addUserReq(uId, wId);
+          _receiver.addUserReq(uId, wId);
         }
       }
-    }
+      _form.clear();
+    }catch(NullPointerException e){}
   }
 }

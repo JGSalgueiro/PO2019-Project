@@ -1,0 +1,49 @@
+*** tests/A-13-02-M-ok.out	2019-11-20 22:27:00.000000000 +0000
+--- tests/A-13-02-M-ok.outhyp	2019-12-06 17:51:20.416267600 +0000
+***************
+*** 43,58 ****
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 25.
+! O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
+! 1 - Requisitar obra
+! 2 - Devolver obra
+! 0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 85.
+! O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+  Escolha uma opção: Menu Principal
+  1 - Abrir dados
+  2 - Guardar dados
+--- 43,53 ----
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número de utente: Introduza o número da obra: O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
++ Escolha uma opção: Número inválido!
+  Escolha uma opção: Menu Principal
+  1 - Abrir dados
+  2 - Guardar dados
+***************
+*** 88,94 ****
+  5 - Saldar multa de utente
+  0 - Sair
+  Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+! 1 - Darth Vader - darth@dark.force.coAm - NORMAL - ACTIVO
+  2 - Luke Skywalker - last.jedi@universe.com - NORMAL - ACTIVO
+  3 - Rey - real.last.jedi@universe.com - NORMAL - ACTIVO
+  Menu de Gestão de Utentes
+--- 83,89 ----
+  5 - Saldar multa de utente
+  0 - Sair
+  Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+! 1 - Darth Vader - darth@dark.force.coAm - NORMAL - SUSPENSO - EUR 0
+  2 - Luke Skywalker - last.jedi@universe.com - NORMAL - ACTIVO
+  3 - Rey - real.last.jedi@universe.com - NORMAL - ACTIVO
+  Menu de Gestão de Utentes

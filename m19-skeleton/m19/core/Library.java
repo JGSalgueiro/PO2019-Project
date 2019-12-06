@@ -140,7 +140,7 @@ public class Library implements Serializable {
       }
     }
 
-    else if(w.getAvailableCopies() < 5){
+    else if(w.getAvailableCopies() <= 5){
       if(u.getBehaviour().equals("NORMAL")){
         return 8;
       }
@@ -164,7 +164,6 @@ public class Library implements Serializable {
     int res = verifyReq(u, w);
     if(res == 0 && u.getIsSuspended() == false){
       int deadline = atributeReturnDate(u, w) + date;
-      System.out.println("cona");
       Request r = new Request(deadline, u, w);
       _requests.add(r);
       u.makeRequest(r);
@@ -177,22 +176,20 @@ public class Library implements Serializable {
     throw new RuleFailedException(u.getUserID(), w.getWorkID(), res);
   }
 
-//FIXME DAWG
   int returnW(User u, Work w, int date){
-    w.notificationReq();
     for(Request r : _requests){
       if(r.getUser() == u && r.getWork() == w){
-        Request ret = r;
-        int deadline = ret.getDeadline();
-        w.addAvailableCopies(1);
-        u.deleteRequests(ret);
-        _requests.remove(ret);
-        if(deadline <= date){
+        int deadline = r.getDeadline();
+        w.incrementAvailableCopies();
+        u.deleteRequests(r);
+        _requests.remove(r);
+        if(deadline >= date){
           u.workDeliveredOnTime();
         }
-        else if(deadline > date){
+        else if(deadline < date){
           u.workNotDeliveredOnTime();
         }
+        w.notificationReq();
         u.checkStreak();
         return u.getFine();
       }
@@ -215,11 +212,6 @@ public class Library implements Serializable {
     Work w = _workList.get(id);
     return w;
   }
-
-  /*Request findPendingRequestbyId(int id){
-    Request r = _pendingRequests.get(id);
-    return r;
-  }*/
   
   /**
   * Search Parameter : Title of the Work

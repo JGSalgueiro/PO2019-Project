@@ -1,9 +1,10 @@
 package m19.core;
-import java.util.*;
-import m19.core.*;
 import java.io.Serializable;
 
-public class Request{
+public class Request implements Serializable{
+	/** Serial number for serialization. */
+	private static final Long serialVersionUID = 201901101348L;
+
 	private int _deadline;
 	private User _user;
 	private Work _work;

@@ -13,8 +13,6 @@ import pt.tecnico.po.ui.DialogException;
  * 4.4.2. Return a work.
  */
 public class DoReturnWork extends Command<LibraryManager> {
-
-  // FIXME define input fields
   private Input<Integer> _uId;
   private Input<Integer> _wId;
   private Input<String> _wantsInfo;
@@ -24,25 +22,28 @@ public class DoReturnWork extends Command<LibraryManager> {
    */
   public DoReturnWork(LibraryManager receiver) {
     super(Label.RETURN_WORK, receiver);
-    // FIXME initialize input fields
-    _uId = _form.addIntegerInput(Message.requestUserId());
-    _wId = _form.addIntegerInput(Message.requestWorkId());
   }
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
   public final void execute() throws DialogException {
-    // FIXME implement command
-    _form.parse();
+    try{
+      _uId = _form.addIntegerInput(Message.requestUserId());
+      _wId = _form.addIntegerInput(Message.requestWorkId());
+      _form.parse();
+      int uId = _uId.value();
+      int wId = _wId.value();
 
-    if(_uId.value() != null && _wId.value() != null){
-      int returnValue = _receiver.returnWork(_uId.value() , _wId.value());
+      int returnValue = _receiver.returnWork(uId , wId);
 
       if(returnValue > 0){
-        _form.clear();
         _wantsInfo = _form.addStringInput(Message.requestFinePaymentChoice());
         _form.parse();
+        if(_wantsInfo.value().equals("s")){
+          _receiver.payFine(uId);
+        }
       }
-    }
+      _form.clear();
+    }catch(NullPointerException e){}
   }
 }

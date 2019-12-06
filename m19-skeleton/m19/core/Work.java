@@ -73,6 +73,10 @@ public abstract class Work extends Observable implements Serializable{
 		_availableCopies--;
 	}
 
+	void incrementAvailableCopies(){
+		_availableCopies++;
+	}
+
 	String getWorkCategory(){
 		if(_category == Category.FICTION){
 			return "Ficção";
@@ -106,7 +110,7 @@ public abstract class Work extends Observable implements Serializable{
 	
 	void notificationReq(){
 		for (Observer o : _reqUsers) {
-			o.update(new Notification(("REQUISIÇÃO: " + toString())));
+			o.update(new Notification(("ENTREGA: " + toString())));
 		}
 	}
 	
@@ -120,10 +124,9 @@ public abstract class Work extends Observable implements Serializable{
 	
 	void notificationRet(){
 		for (Observer o : _retUsers) {
-			o.update(new Notification(("ENTREGA: " + toString())));
+			o.update(new Notification(("REQUISIÇÃO: " + toString())));
 		}
 	}
-
 	
 	abstract String getType();
 
