@@ -7,7 +7,58 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Ficheiro a abrir: Abrir dados: Operação inválida: O ficheiro 'faltoso' não existe.
+Escolha uma opção: Ficheiro a abrir: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não pode requisitar a obra 1. Violação da regra 2.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 1 deve ser devolvida no dia 28.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Data actual: 20
+Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Data actual: 22
 Menu Principal
 1 - Abrir dados
 2 - Guardar dados
@@ -21,52 +72,30 @@ Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não existe.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: A obra 1 não foi requisitada pelo utente 1.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 0 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: O utente 3 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: O utente 0 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
+Escolha uma opção: Data actual: 28
 Menu Principal
 1 - Abrir dados
 2 - Guardar dados
@@ -76,4 +105,21 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: 

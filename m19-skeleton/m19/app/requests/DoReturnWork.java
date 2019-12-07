@@ -28,6 +28,7 @@ public class DoReturnWork extends Command<LibraryManager> {
   @Override
   public final void execute() throws DialogException {
     try{
+      _form.clear();
       _uId = _form.addIntegerInput(Message.requestUserId());
       _wId = _form.addIntegerInput(Message.requestWorkId());
       _form.parse();
@@ -37,6 +38,8 @@ public class DoReturnWork extends Command<LibraryManager> {
       int returnValue = _receiver.returnWork(uId , wId);
 
       if(returnValue > 0){
+        _form.clear();
+        _display.popup(Message.showFine(uId, returnValue));
         _wantsInfo = _form.addStringInput(Message.requestFinePaymentChoice());
         _form.parse();
         if(_wantsInfo.value().equals("s")){

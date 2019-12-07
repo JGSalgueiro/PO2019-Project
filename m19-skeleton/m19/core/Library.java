@@ -162,7 +162,9 @@ public class Library implements Serializable {
 
   int createRequest(User u, Work w, int date) throws RuleFailedException{ 
     int res = verifyReq(u, w);
+
     if(res == 0 && u.getIsSuspended() == false){
+
       int deadline = atributeReturnDate(u, w) + date;
       Request r = new Request(deadline, u, w);
       _requests.add(r);

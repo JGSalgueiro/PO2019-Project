@@ -14,7 +14,7 @@ for x in tests/*.in; do
     if [ -s ${x%.in}.diff ]; then
         echo -n "F"
         failures=$failures"Fail: $x: See file ${x%.in}.diff\n" ;
-        echo "FAIL: $x. See file ${x%.in}.diff " ;
+#        echo "FAIL: $x. See file ${x%.in}.diff " ;
     else
         let correct++;
         echo -n "."

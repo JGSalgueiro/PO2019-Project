@@ -6,6 +6,8 @@ import m19.core.Work;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
 import pt.tecnico.po.ui.DialogException;
+import m19.app.exception.NoSuchUserException;
+import m19.app.exception.NoSuchWorkException;
 // FIXME import other core concepts
 // FIXME import other ui concepts
 
@@ -27,8 +29,9 @@ public class DoRequestWork extends Command<LibraryManager> {
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
-  public final void execute() throws DialogException {
+  public final void execute() throws DialogException, NoSuchUserException, NoSuchWorkException{
     try{
+      _form.clear();
       _uId = _form.addIntegerInput(Message.requestUserId());
       _wId = _form.addIntegerInput(Message.requestWorkId());
       _form.parse();
@@ -39,6 +42,7 @@ public class DoRequestWork extends Command<LibraryManager> {
 
       if(returnValue != -1){
         _display.popup(Message.workReturnDay(wId, returnValue));
+        _form.clear();
       }
       else{
         _form.clear();

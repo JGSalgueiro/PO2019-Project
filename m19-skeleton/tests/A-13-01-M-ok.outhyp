@@ -7,8 +7,7 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Ficheiro a abrir: Abrir dados: Operação inválida: O ficheiro 'faltoso' não existe.
-Menu Principal
+Escolha uma opção: Ficheiro a abrir: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -21,58 +20,26 @@ Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não existe.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não pode requisitar a obra 1. Violação da regra 2.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 0 não existe.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 2 deve ser devolvida no dia 35.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: O utente 1 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Número inválido!
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: O utente 0 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 0 não existe.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
+Escolha uma opção: Data actual: 20
 Menu Principal
 1 - Abrir dados
 2 - Guardar dados
@@ -82,4 +49,88 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: A obra 1 não foi requisitada pelo utente 1.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Número inválido!
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 2 deve pagar uma multa de EUR 25.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+1 - Darth Vader - darth@dark.force.coAm - FALTOSO - SUSPENSO - EUR 0
+2 - Luke Skywalker - last.jedi@universe.com - NORMAL - SUSPENSO - EUR 25
+Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+1 - Darth Vader - darth@dark.force.coAm - FALTOSO - ACTIVO
+2 - Luke Skywalker - last.jedi@universe.com - NORMAL - SUSPENSO - EUR 25
+Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número de utente: Saldar multa de utente: Operação inválida: O utente 3 não existe.
+Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: 

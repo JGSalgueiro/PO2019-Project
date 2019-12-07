@@ -100,6 +100,10 @@ public class LibraryManager {
     return _filename;
   }
 
+  public int getUserFine(User u){
+    return u.getFine();
+  }
+
   public int requestWork(int uId, int wId) throws RuleFailedException, NoSuchUserException, NoSuchWorkException{
     User u = getUser(uId);
     Work w = getWorkbyId(wId);
@@ -116,7 +120,7 @@ public class LibraryManager {
     return res;
   }
 
-  public void addUserReq(int uId, int wId){
+  public void addUserReq(int uId, int wId) throws NoSuchUserException, NoSuchWorkException{
     User u = getUser(uId);
     Work w = getWorkbyId(wId);
     w.addUserReq(u);

@@ -1,0 +1,31 @@
+*** tests/A-13-05-M-ok.out	2019-11-20 22:26:59.919446000 +0000
+--- tests/A-13-05-M-ok.outhyp	2019-12-07 11:07:30.102594300 +0000
+***************
+*** 22,28 ****
+  4 - Mostrar notificações de utente
+  5 - Saldar multa de utente
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Saldar multa de utente: Operação inválida: O utente 10 não existe.
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+--- 22,28 ----
+  4 - Mostrar notificações de utente
+  5 - Saldar multa de utente
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número de utente: Saldar multa de utente: Operação inválida: O utente 0 não se encontra suspenso.
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+***************
+*** 39,42 ****
+  6 - Menu de gestão de obras
+  7 - Menu de gestão de requisições
+  0 - Sair
+! Escolha uma opção: 
+\ No newline at end of file
+--- 39,42 ----
+  6 - Menu de gestão de obras
+  7 - Menu de gestão de requisições
+  0 - Sair
+! Escolha uma opção: Fim de entrada de dados (R-EOF): pt.tecnico.po.io.RuntimeEOFException: Fim do fluxo de dados de entrada
