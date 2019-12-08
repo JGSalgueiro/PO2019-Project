@@ -41,7 +41,7 @@ public class DoReturnWork extends Command<LibraryManager> {
         _wantsInfo = _form.addStringInput(Message.requestFinePaymentChoice());
         _form.parse();
         if(_wantsInfo.value().equals("s")){
-          _receiver.payFine(uId);
+          _receiver.payFine(uId, returnValue);
         }
       }
       _form.clear();

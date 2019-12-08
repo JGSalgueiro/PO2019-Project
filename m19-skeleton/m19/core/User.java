@@ -85,8 +85,8 @@ public class User implements Serializable, Observer{
 		}
 	}
 
-	void pay(){
-		_fine = 0;
+	void pay(int payedAmount){
+		_fine = _fine - payedAmount;
 	}
 
 	void setFine(int f){

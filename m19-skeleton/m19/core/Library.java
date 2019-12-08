@@ -172,6 +172,7 @@ public class Library implements Serializable {
     for(Request r : _requests){
       if(r.getUser() == u && r.getWork() == w){
         int deadline = r.getDeadline();
+        int numReqs = u.getNumRequests();
         w.incrementAvailableCopies();
         u.deleteRequests(r);
         _requests.remove(r);
@@ -182,8 +183,12 @@ public class Library implements Serializable {
           u.workNotDeliveredOnTime();
         }
         w.notificationReq();
-        u.checkStreak();
-        return u.getFine();
+        u.checkStreak();  
+        if(numReqs == 1){
+          return u.getFine();
+        } 
+
+        return r.getFine();
       }
     }
     return -1;

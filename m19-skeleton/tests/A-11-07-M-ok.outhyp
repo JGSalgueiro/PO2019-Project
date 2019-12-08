@@ -64,16 +64,16 @@ Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 110.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 60.
 O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 25.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Número inválido!
 Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
@@ -90,7 +90,7 @@ Escolha uma opção: Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.coAm - NORMAL - SUSPENSO - EUR 0
+Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.coAm - NORMAL - SUSPENSO - EUR 25
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
@@ -111,11 +111,11 @@ Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 25.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Número inválido!
 Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
@@ -132,7 +132,7 @@ Escolha uma opção: Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.coAm - FALTOSO - SUSPENSO - EUR 0
+Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.coAm - FALTOSO - ACTIVO
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente

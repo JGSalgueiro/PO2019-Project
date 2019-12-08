@@ -35,7 +35,7 @@ public class DoPayFine extends Command<LibraryManager> {
 
       user = _receiver.getUser(_uId.value());
 
-      _receiver.payFine(_uId.value());
+      _receiver.payFine(_uId.value(), _receiver.getUserFine(user));
 
     }catch(NullPointerException e){
       throw new NoSuchUserException(_uId.value());

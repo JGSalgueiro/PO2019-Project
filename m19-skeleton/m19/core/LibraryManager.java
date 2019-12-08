@@ -146,7 +146,7 @@ public class LibraryManager {
     return res;
   }
 
-  public void payFine(int uId) throws NoSuchUserException, UserIsActiveException{
+  public void payFine(int uId, int uFine) throws NoSuchUserException, UserIsActiveException{
     try{
       User u = getUser(uId);
       if(!u.getIsSuspended()){
@@ -156,7 +156,7 @@ public class LibraryManager {
       if(faulty == 0){
         u.setSuspension(false);
       }
-      u.pay();
+      u.pay(uFine);
     }catch(NullPointerException e){
       throw new NoSuchUserException(uId);
     }
