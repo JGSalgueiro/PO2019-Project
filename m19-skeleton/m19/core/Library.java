@@ -184,10 +184,6 @@ public class Library implements Serializable {
         }
         w.notificationReq();
         u.checkStreak();  
-        if(numReqs == 1){
-          return u.getFine();
-        } 
-
         return r.getFine();
       }
     }

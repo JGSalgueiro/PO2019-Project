@@ -91,6 +91,10 @@ public class LibraryManager {
     return _date.getTime();
   }
 
+  public int getNumberOfUserRequests(User u){
+    return u.getNumRequests();
+  }
+
   public void advanceDate(int dateDif){
     _date.advanceTime(dateDif);
     _library.updateRequests(_date.getTime());
@@ -146,7 +150,7 @@ public class LibraryManager {
     return res;
   }
 
-  public void payFine(int uId, int uFine) throws NoSuchUserException, UserIsActiveException{
+  public void payFine(int uId, int ufine) throws NoSuchUserException, UserIsActiveException{
     try{
       User u = getUser(uId);
       if(!u.getIsSuspended()){
@@ -156,10 +160,14 @@ public class LibraryManager {
       if(faulty == 0){
         u.setSuspension(false);
       }
-      u.pay(uFine);
+      u.pay(ufine);
     }catch(NullPointerException e){
       throw new NoSuchUserException(uId);
     }
+  }
+
+  public void updateFine(int fine, User u){
+    u.setFine(fine);
   }
 
   public List<Notification> warnUserWhenWorkIsAvailable(int uId) throws NoSuchUserException{

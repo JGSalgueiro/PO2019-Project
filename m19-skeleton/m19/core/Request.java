@@ -45,7 +45,6 @@ public class Request implements Serializable{
 			_user.setSuspension(true);
 			_isFaulty = true;
 			_fine = (date - _deadline)*5;
-			_user.setFine((date - _deadline)*5);
 		}
 	}
 }
