@@ -116,7 +116,16 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número de utente: Saldar multa de utente: Operação inválida: O utente 3 não existe.
+Escolha uma opção: Introduza o número de utente: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+1 - Darth Vader - darth@dark.force.coAm - FALTOSO - ACTIVO
+2 - Luke Skywalker - last.jedi@universe.com - NORMAL - ACTIVO
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente

@@ -20,8 +20,7 @@ public class Library implements Serializable {
   private int _nextWorkId;
   private HashMap<Integer,User> _userList; 
   private HashMap<Integer,Work> _workList;
-  //private List<Request> _pendingRequests;
-  private List<Request> _requests;//atendedRequests
+  private List<Request> _requests;
   private List<Rules> _rules;
 
   public Library(){
@@ -29,7 +28,6 @@ public class Library implements Serializable {
     _nextUserId = 0;
     _userList = new HashMap<Integer,User>();  
     _workList = new HashMap<Integer,Work>();
-    //_pendingRequests = new ArrayList<Request>();
     _requests = new ArrayList<Request>();
     _rules = new ArrayList<Rules>();
     _rules.add(new CheckSameReqTwice());
@@ -64,10 +62,6 @@ public class Library implements Serializable {
     return _workList;
   }
 
-  /*List<Request> getAllPendingRequests(){
-    return _pendingRequests;
-  }*/
-
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
     _userList.put(_nextUserId, u);
@@ -83,10 +77,6 @@ public class Library implements Serializable {
   void attendRequest(Request req){
     _requests.add(req);
   }
-
-  /*void waitForWork(Request req){
-    _pendingRequests.add(req);
-  }*/
 
   void addBook(Book b){
     _workList.put(_nextWorkId, b);
@@ -131,7 +121,7 @@ public class Library implements Serializable {
       return 2;
     }
 
-    if(w.getAvailableCopies() == 1){
+    if(w.getCopies() == 1){
       if(u.getBehaviour().equals("NORMAL")){
         return 3;
       }
@@ -140,7 +130,7 @@ public class Library implements Serializable {
       }
     }
 
-    else if(w.getAvailableCopies() <= 5){
+    else if(w.getCopies() <= 5){
       if(u.getBehaviour().equals("NORMAL")){
         return 8;
       }

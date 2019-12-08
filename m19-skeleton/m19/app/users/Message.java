@@ -32,15 +32,4 @@ public interface Message {
   static String userRegistrationSuccessful(int idUser) {
     return "Novo utente criado com o número " + idUser + ".";
   }
-
-  /**
-   * @param idUser
-   * @param uFine
-   * @return message
-   **/
-  static String showPendingUserFine(int idUser, int uFine) {
-    return "O utente " + idUser + " deve pagar uma multa de EUR " + uFine + ".";
-  }
-
-
 }

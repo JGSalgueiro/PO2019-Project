@@ -29,15 +29,11 @@ public class DoPayFine extends Command<LibraryManager> {
   @Override
   public final void execute() throws DialogException {
     try{
+      _form.clear();
       _uId = _form.addIntegerInput(Message.requestUserId());
       _form.parse();
-      _display.clear();
 
       user = _receiver.getUser(_uId.value());
-
-      /*_display.popup(Message.showPendingUserFine(_uId.value() , _receiver.getUserFine(user)));
-
-      _wantToPay = _form.addStringInput(Message.)*/
 
       _receiver.payFine(_uId.value());
 

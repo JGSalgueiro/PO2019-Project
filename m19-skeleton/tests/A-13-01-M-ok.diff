@@ -1,5 +1,5 @@
 *** tests/A-13-01-M-ok.out	2019-11-20 22:26:59.913173800 +0000
---- tests/A-13-01-M-ok.outhyp	2019-12-07 11:07:28.462185700 +0000
+--- tests/A-13-01-M-ok.outhyp	2019-12-07 21:14:26.055456600 +0000
 ***************
 *** 20,26 ****
   1 - Requisitar obra
@@ -60,29 +60,3 @@
   2 - Luke Skywalker - last.jedi@universe.com - NORMAL - SUSPENSO - EUR 25
   Menu de Gestão de Utentes
   1 - Registar utente
-***************
-*** 115,130 ****
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: Introduza o número de utente: Menu de Gestão de Utentes
-! 1 - Registar utente
-! 2 - Mostrar utente
-! 3 - Listar utentes
-! 4 - Mostrar notificações de utente
-! 5 - Saldar multa de utente
-! 0 - Sair
-! Escolha uma opção: 0 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
-! 1 - Darth Vader - darth@dark.force.coAm - FALTOSO - ACTIVO
-! 2 - Luke Skywalker - last.jedi@universe.com - NORMAL - ACTIVO
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente
---- 116,122 ----
-  4 - Mostrar notificações de utente
-  5 - Saldar multa de utente
-  0 - Sair
-! Escolha uma opção: Introduza o número de utente: Introduza o número de utente: Saldar multa de utente: Operação inválida: O utente 3 não existe.
-  Menu de Gestão de Utentes
-  1 - Registar utente
-  2 - Mostrar utente

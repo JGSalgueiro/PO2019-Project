@@ -18,16 +18,17 @@ public class DoShowUser extends Command<LibraryManager> {
    */
   public DoShowUser(LibraryManager receiver) {
     super(Label.SHOW_USER, receiver);
-    _id = _form.addIntegerInput(Message.requestUserId());
   }
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
   public final void execute() throws DialogException{
-    _form.parse();
     try{
+      _id = _form.addIntegerInput(Message.requestUserId());
+      _form.parse();
       User u = _receiver.getUser(_id.value());
       _display.popup(u.toString());
+      _form.clear();
     }catch(NullPointerException e){
       throw new NoSuchUserException(_id.value());
     };
