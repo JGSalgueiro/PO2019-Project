@@ -1,10 +1,11 @@
 package m19.core;
-import m19.core.User;
-import m19.core.Work;
 
+/**
+ * Rule that checks if a User trys to Request the same Work twice
+ */
 public class CheckSameReqTwice extends Rules{
 	@Override
-	public Boolean rule(User u, Work w){
-		return !u.workIsRequested(w.getWorkID());
+	public Boolean rule(User user, Work work){
+		return !user.workIsRequested(work.getWorkID());
 	}
 }

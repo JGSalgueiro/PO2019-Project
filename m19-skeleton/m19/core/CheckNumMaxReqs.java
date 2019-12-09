@@ -1,14 +1,14 @@
 package m19.core;
-import m19.core.User;
 
+/**
+ * Rule that checks if User exceeds the amount of available Requests
+ */
 public class CheckNumMaxReqs extends Rules{
-
 	@Override
-	public Boolean rule(User u, Work w){
-		if(u.getMaxRequests() - u.getNumRequests() == 0){
+	public Boolean rule(User user, Work work){
+		if(user.getMaxRequests() - user.getNumRequests() == 0){
 			return false;
 		}
-
 		return true;
 	}
 }

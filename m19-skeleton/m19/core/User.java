@@ -73,6 +73,9 @@ public class User implements Serializable, Observer{
 		_deliveredOnTime--;
 	}
 
+	/**
+	 * Updates the User Behaviour acording to its last delivers
+	 */
 	void checkStreak(){
 		if(_deliveredOnTime == -3){
 			_behaviour = new Faulty();
@@ -119,6 +122,9 @@ public class User implements Serializable, Observer{
 		_requests.remove(req);
 	}
 
+	/**
+	 * Checks if set work is requested
+	 */
 	Boolean workIsRequested(int wId){
 		for(Request r : _requests){
 			if(r.getWork().getWorkID() == wId){

@@ -1,11 +1,11 @@
 package m19.core;
 
-import m19.core.*;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
- * Abstract Class that represents a Generic Work (DVD or Book).
+ * Abstract Class that represents a Generic Work.
  */
 public abstract class Work extends Observable implements Serializable{
 	/** Serial number for serialization. */
@@ -20,6 +20,9 @@ public abstract class Work extends Observable implements Serializable{
 	private List<Observer> _reqUsers;
   	private List<Observer> _retUsers;
 
+  	/**
+  	 * Constructor of the Work Class
+  	 */
 	public Work(int wID, String wTitle ,int wPrice ,int wCopies ,String cat){
 		_workID = wID;
 		_title = wTitle;
@@ -40,7 +43,6 @@ public abstract class Work extends Observable implements Serializable{
 		else{
 			_category = null;
 		}
-		//_requestedWorks = new ArrayList<Request>();
 	}
 
 	int getWorkID(){
@@ -91,15 +93,6 @@ public abstract class Work extends Observable implements Serializable{
 		return null;
 	}
 
-	/*void requestWork(Request r){
-		_requestedWorks.add(r);
-		_availableCopies--;
-	}
-
-	void returnWork(){
-		
-	}*/
-
 	void addUserReq(Observer o){
 		_reqUsers.add(o);
 	}
@@ -108,6 +101,9 @@ public abstract class Work extends Observable implements Serializable{
 		_reqUsers.remove(o);
 	}
 	
+	/**
+	 * Updates the Delivery Notifications
+	 */
 	void notificationReq(){
 		for (Observer o : _reqUsers) {
 			o.update(new Notification(("ENTREGA: " + toString())));
@@ -122,6 +118,9 @@ public abstract class Work extends Observable implements Serializable{
 		_retUsers.remove(o);
 	}
 	
+	/**
+	 * Updates the Requesitions Notifications
+	 */
 	void notificationRet(){
 		for (Observer o : _retUsers) {
 			o.update(new Notification(("REQUISIÇÃO: " + toString())));

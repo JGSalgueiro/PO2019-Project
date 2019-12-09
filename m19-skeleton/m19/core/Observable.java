@@ -1,7 +1,8 @@
 package m19.core;
 
-import m19.core.*;
-
+/**
+ * Observable Class
+ */
 public abstract class Observable{
 	abstract void addUserReq(Observer o);
 	abstract void removeUserReq(Observer o);

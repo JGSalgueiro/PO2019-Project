@@ -1,10 +1,11 @@
 package m19.core;
-import m19.core.User;
 
+/**
+ * Rule that checks if a User is Suspended
+ */
 public class CheckUserSuspended extends Rules{
-
 	@Override
-	public Boolean rule(User u, Work w){
-		return !u.getIsSuspended();
+	public Boolean rule(User user, Work work){
+		return !user.getIsSuspended();
 	}
 }

@@ -1,14 +1,14 @@
 package m19.core;
-import m19.core.User;
 
+/**
+ * Rule that states a Reference Work cant be Requested by a User
+ */
 public class CheckReferenceWork extends Rules{
-
 	@Override
-	public Boolean rule(User u, Work w){
-		if(w.getWorkCategory().equals("Referência")){
+	public Boolean rule(User user, Work work){
+		if(work.getWorkCategory().equals("Referência")){
 			return false;
 		}
-
 		return true;
 	}
 }

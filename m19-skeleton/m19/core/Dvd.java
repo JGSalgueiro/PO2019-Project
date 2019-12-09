@@ -2,7 +2,6 @@ package m19.core;
 
 import java.io.Serializable;
 
-
 /**
  * Class that represents a DVD.
  */

@@ -1,0 +1,20 @@
+*** tests/A-12-02-M-ok.out	2019-11-20 22:26:39.261821900 +0000
+--- tests/A-12-02-M-ok.outhyp	2019-12-09 10:53:42.005390400 +0000
+***************
+*** 40,47 ****
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: O utente 11 não existe.
+! Menu de Gestão de Requisições
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+--- 40,46 ----
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair
+! Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
+  1 - Requisitar obra
+  2 - Devolver obra
+  0 - Sair

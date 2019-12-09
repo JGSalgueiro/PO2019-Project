@@ -6,7 +6,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.List;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
@@ -17,7 +16,7 @@ import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.app.exception.UserIsActiveException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
 
 /**
  * The façade class.
@@ -28,6 +27,9 @@ public class LibraryManager {
   private String _filename;
   private Rules _rules;
 
+  /**
+   * Constructor of the LibraryManager Class
+   */
   public LibraryManager(){
     _library = new Library();
     _date = new Date();
@@ -65,18 +67,23 @@ public class LibraryManager {
   }
 
   public User getUser(int id){
-    User u = _library.findUserbyId(id);
-    return u;
+    User user = _library.findUserbyId(id);
+    return user;
   }
 
+  /**
+   * Gets a work by Search Term : Title
+   * @param searchTerm
+   * @return the Work with given Title
+   */
   public Work getWork(String searchTerm){
-    Work w = _library.findWorkbyTitle(searchTerm);
-    return w;
+    Work work = _library.findWorkbyTitle(searchTerm);
+    return work;
   }
 
   public Work getWorkbyId(int id){
-    Work w = _library.findWorkbyId(id);
-    return w;
+    Work work = _library.findWorkbyId(id);
+    return work;
   }
 
   public int getUserNum(){
@@ -91,8 +98,12 @@ public class LibraryManager {
     return _date.getTime();
   }
 
-  public int getNumberOfUserRequests(User u){
-    return u.getNumRequests();
+  public String getFilename(){
+    return _filename;
+  }
+
+  public int getNumberOfUserRequests(User user){
+    return user.getNumRequests();
   }
 
   public void advanceDate(int dateDif){
@@ -100,92 +111,124 @@ public class LibraryManager {
     _library.updateRequests(_date.getTime());
   }
 
-  public String getFilename(){
-    return _filename;
+  public int getUserFine(User user){
+    return user.getFine();
   }
 
-  public int getUserFine(User u){
-    return u.getFine();
+  /**
+   * @param userId
+   * @param workId
+   * @return the Return date for the work
+   */
+  public int requestWork(int userId, int workId) throws RuleFailedException, NoSuchUserException, NoSuchWorkException{
+    User user = getUser(userId);
+    Work work = getWorkbyId(workId);
+
+    if(user == null){
+      throw new NoSuchUserException(userId);
+    }
+
+    if(work == null){
+      throw new NoSuchWorkException(workId);
+    }
+
+    int returnDate = _library.createRequest(user, work, _date.getTime());
+    return returnDate;
   }
 
-  public int requestWork(int uId, int wId) throws RuleFailedException, NoSuchUserException, NoSuchWorkException{
-    User u = getUser(uId);
-    Work w = getWorkbyId(wId);
-
-    if(u == null){
-      throw new NoSuchUserException(uId);
-    }
-
-    if(w == null){
-      throw new NoSuchWorkException(wId);
-    }
-
-    int res = _library.createRequest(u, w, _date.getTime());
-    return res;
+  /** 
+   * Adds a Request to a Work 
+   * @param userId
+   * @param workId
+   */
+  public void addUserReq(int userId, int workId) throws NoSuchUserException, NoSuchWorkException{
+    User user = getUser(userId);
+    Work work = getWorkbyId(workId);
+    work.addUserReq(user);
   }
 
-  public void addUserReq(int uId, int wId) throws NoSuchUserException, NoSuchWorkException{
-    User u = getUser(uId);
-    Work w = getWorkbyId(wId);
-    w.addUserReq(u);
-  }
+  /**
+   * User with the given user Id returns the work with given work id
+   * @param userId
+   * @param workId
+   * @return the fine associated with the return (0 if on time)
+   */
+  public int returnWork(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
+    User user = getUser(userId);
+    Work work = getWorkbyId(workId);
 
-  public int returnWork(int uId, int wId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
-    User u = getUser(uId);
-    Work w = getWorkbyId(wId);
-
-    if(u == null){
-      throw new NoSuchUserException(uId);
+    if(user == null){
+      throw new NoSuchUserException(userId);
     }
 
-    if(w == null){
-      throw new NoSuchWorkException(wId);
+    if(work == null){
+      throw new NoSuchWorkException(workId);
     }
 
-    if(!u.workIsRequested(wId)){
-      throw new WorkNotBorrowedByUserException(wId, uId);
+    if(!user.workIsRequested(workId)){
+      throw new WorkNotBorrowedByUserException(workId, userId);
     }
     
-    int res = _library.returnW(u, w, _date.getTime());
-    return res;
+    int fine = _library.returnWork(user, work, _date.getTime());
+    return fine;
   }
 
-  public void payFine(int uId, int ufine) throws NoSuchUserException, UserIsActiveException{
+  /**
+   * User pays the set amount of Fine
+   * @param userId
+   * @param userFine
+   */
+  public void payFine(int userId, int userFine) throws NoSuchUserException, UserIsActiveException{
     try{
-      User u = getUser(uId);
-      if(!u.getIsSuspended()){
-        throw new UserIsActiveException(uId);
+      User user = getUser(userId);
+      if(!user.getIsSuspended()){
+        throw new UserIsActiveException(userId);
       }
-      int faulty = u.checkPassedDeadline();
+      int faulty = user.checkPassedDeadline();
       if(faulty == 0){
-        u.setSuspension(false);
+        user.setSuspension(false);
       }
-      u.pay(ufine);
+      user.pay(userFine);
     }catch(NullPointerException e){
-      throw new NoSuchUserException(uId);
+      throw new NoSuchUserException(userId);
     }
   }
 
-  public void updateFine(int fine, User u){
-    u.setFine(fine);
+  /**
+   * Fines the user the set amount
+   * @param fine
+   * @param user
+   */
+  public void updateFine(int fine, User user){
+    user.setFine(fine);
   }
 
-  public List<Notification> warnUserWhenWorkIsAvailable(int uId) throws NoSuchUserException{
+  /**
+   * Notifies the User of the return of set Work
+   * @param userId
+   * @return a List of the Notification Class 
+   */
+  public List<Notification> warnUserWhenWorkIsAvailable(int userId) throws NoSuchUserException{
     try{
-      User u = getUser(uId);
-      return u.getNotification();
+      User user = getUser(userId);
+      return user.getNotification();
       
     }catch(NullPointerException e){
-      throw new NoSuchUserException(uId);
+      throw new NoSuchUserException(userId);
     } 
   }
 
+  /**
+   * Search Paramether: Title or Creator of the Work
+   * @param searchTerm
+   * @return the List of works with set paramther
+   */
   public List<Work> worksSearchedByGivenTerm(String searchTerm){
     List<Work> arrayWorks = new ArrayList<Work>(getAllWorks().values());
     List<Work> searchedWorks = new ArrayList<Work>();
-    for(Work w : arrayWorks){
-      if(w.getTitle().indexOf(searchTerm) != -1 || w.getCreator().indexOf(searchTerm) != -1){
-        searchedWorks.add(w);
+    for(Work work : arrayWorks){
+      if(work.getTitle().indexOf(searchTerm) != -1 || work.getCreator().indexOf(searchTerm) != -1){
+        searchedWorks.add(work);
       }
     }
     return searchedWorks;

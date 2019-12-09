@@ -13,6 +13,7 @@ import m19.app.exception.NoSuchWorkException;
  * 4.4.2. Return a work.
  */
 public class DoReturnWork extends Command<LibraryManager> {
+  /** User id and Work id of the Return*/
   private Input<Integer> _uId;
   private Input<Integer> _wId;
   private Input<String> _wantsInfo;
@@ -29,33 +30,31 @@ public class DoReturnWork extends Command<LibraryManager> {
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
-  public final void execute() throws DialogException {
+  public final void execute() throws DialogException, NoSuchUserException, NoSuchWorkException {
     try{
       _form.clear();
       _uId = _form.addIntegerInput(Message.requestUserId());
       _wId = _form.addIntegerInput(Message.requestWorkId());
       _form.parse();
-      int uId = _uId.value();
-      int wId = _wId.value();
+
+      int returnValue = _receiver.returnWork(_uId.value() , _wId.value());
 
       _user = _receiver.getUser(_uId.value());
       _fine = _receiver.getUserFine(_user);
       _numRequests = _receiver.getNumberOfUserRequests(_user);
 
-      int returnValue = _receiver.returnWork(uId , wId);
-
       if(returnValue > 0){
         _form.clear();
-        _display.popup(Message.showFine(uId, returnValue + _fine));
+        _display.popup(Message.showFine(_uId.value(), returnValue + _fine));
 
         _wantsInfo = _form.addStringInput(Message.requestFinePaymentChoice());
         _form.parse();
         if(_wantsInfo.value().equals("s")){
           if(_numRequests == 0){
-            _receiver.payFine(uId, returnValue + _fine);
+            _receiver.payFine(_uId.value(), returnValue + _fine);
           }
           else{
-            _receiver.payFine(uId, 0);
+            _receiver.payFine(_uId.value(), 0);
           }
         }
         else if(_wantsInfo.value().equals("n")){
@@ -68,9 +67,10 @@ public class DoReturnWork extends Command<LibraryManager> {
         }
       }
       _form.clear();
-    }catch(NullPointerException e){
-      _form.clear();
+    }catch(NoSuchUserException e){
       throw new NoSuchUserException(_uId.value());
+    }catch(NoSuchWorkException e){
+      throw new NoSuchWorkException(_wId.value());
     }
   }
 } 

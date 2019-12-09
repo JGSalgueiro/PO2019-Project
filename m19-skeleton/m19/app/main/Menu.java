@@ -16,7 +16,7 @@ public class Menu extends pt.tecnico.po.ui.Menu {
       new DoAdvanceDate(receiver), // 4.1.3
       new DoOpenUsersMenu(receiver), // 4.1.4
       new DoOpenWorksMenu(receiver), // 4.1.4
-      new DoOpenRequestsMenu(receiver), // Not Concretized
+      new DoOpenRequestsMenu(receiver), // 4.1.4
     });
   }
 

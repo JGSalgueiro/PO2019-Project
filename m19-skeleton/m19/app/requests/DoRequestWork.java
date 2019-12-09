@@ -8,8 +8,6 @@ import pt.tecnico.po.ui.Input;
 import pt.tecnico.po.ui.DialogException;
 import m19.app.exception.NoSuchUserException;
 import m19.app.exception.NoSuchWorkException;
-// FIXME import other core concepts
-// FIXME import other ui concepts
 
 /**
  * 4.4.1. Request work.
@@ -35,13 +33,11 @@ public class DoRequestWork extends Command<LibraryManager> {
       _uId = _form.addIntegerInput(Message.requestUserId());
       _wId = _form.addIntegerInput(Message.requestWorkId());
       _form.parse();
-      int uId = _uId.value();
-      int wId = _wId.value();
 
-      int returnValue = _receiver.requestWork(uId , wId);
+      int returnValue = _receiver.requestWork(_uId.value(), _wId.value());
 
       if(returnValue != -1){
-        _display.popup(Message.workReturnDay(wId, returnValue));
+        _display.popup(Message.workReturnDay(_wId.value(), returnValue));
         _form.clear();
       }
       else{
@@ -49,7 +45,7 @@ public class DoRequestWork extends Command<LibraryManager> {
         _wantsInfo = _form.addStringInput(Message.requestReturnNotificationPreference());
         _form.parse();
         if(_wantsInfo.value().equals("s")){
-          _receiver.addUserReq(uId, wId);
+          _receiver.addUserReq(_uId.value(), _wId.value());
         }
       }
       _form.clear();

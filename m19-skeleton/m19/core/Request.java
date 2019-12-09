@@ -1,6 +1,10 @@
 package m19.core;
+
 import java.io.Serializable;
 
+/**
+ * Class that represents a Request made by User of set Work to the Library
+ */
 public class Request implements Serializable{
 	/** Serial number for serialization. */
 	private static final Long serialVersionUID = 201901101348L;
@@ -16,7 +20,6 @@ public class Request implements Serializable{
 		_fine = 0;
 		_user = r_user;
 		_work = r_work;
-		
 		_isFaulty = false;
 	}
 
@@ -40,6 +43,9 @@ public class Request implements Serializable{
 		return _isFaulty;
 	}
 
+	/**
+	 * Updates the variables acording to the date
+	 */
 	void updateReq(int date){
 		if(_deadline < date){
 			_user.setSuspension(true);

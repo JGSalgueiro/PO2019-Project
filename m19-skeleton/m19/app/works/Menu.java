@@ -13,7 +13,7 @@ public class Menu extends pt.tecnico.po.ui.Menu {
     super(Label.TITLE, new Command<?>[] { // 4.3
       new DoDisplayWork(receiver), // 4.3.1
       new DoDisplayWorks(receiver), // 4.3.2
-      new DoPerformSearch(receiver), // Not Concretized
+      new DoPerformSearch(receiver), // 4.3.3
     });
   }
 

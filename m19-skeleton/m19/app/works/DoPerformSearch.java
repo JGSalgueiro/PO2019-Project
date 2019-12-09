@@ -27,11 +27,14 @@ public class DoPerformSearch extends Command<LibraryManager> {
   @Override
   public final void execute() {
     _form.parse();
-    _searchedWorks = _receiver.worksSearchedByGivenTerm(_searchTerm.value());
+
+    if(!_searchTerm.value().equals("")){
+      _searchedWorks = _receiver.worksSearchedByGivenTerm(_searchTerm.value());
     
-    for(Work w : _searchedWorks){
-      _display.addLine(w.toString());
+      for(Work w : _searchedWorks){
+        _display.addLine(w.toString());
+      }
+      _display.display();
     }
-    _display.display();
   } 
 }

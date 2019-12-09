@@ -14,8 +14,8 @@ public class Menu extends pt.tecnico.po.ui.Menu {
       new DoRegisterUser(receiver), //4.2.1
       new DoShowUser(receiver), //4.2.2
       new DoShowUsers(receiver), //4.2.4
-      new DoShowUserNotifications(receiver), // Not Concretized
-      new DoPayFine(receiver), // Not Concretized
+      new DoShowUserNotifications(receiver), // 4.2.3
+      new DoPayFine(receiver), // 4.2.5
     });
   }
 

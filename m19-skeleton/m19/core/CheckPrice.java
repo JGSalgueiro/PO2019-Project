@@ -1,8 +1,9 @@
 package m19.core;
-import m19.core.User;
 
+/**
+ * Rule that states a User cant Request a Work with Price above 25 EUROS
+ */
 public class CheckPrice extends Rules{
-
 	@Override
 	public Boolean rule(User u, Work w){
 		if(w.getPrice() > 25){

@@ -10,19 +10,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class that represents the library as a whole.
+ * Library implementation
+ * This class implements a Library and stores all the info related with it
+ * such as Users , Works, Request Rules and Requests
+ * @author Joao Salgueiro 93725
+ * @author Pedro Marques 93746
+ * @version 2.0
+ * @since October 2019
+ * @see 
  */
 public class Library implements Serializable {
-  /** Serial number for serialization. */
+  /** 
+   * Serial number for serialization. 
+   */
   private static final long serialVersionUID = 201901101348L;
-
+  /** 
+   * The id of the next User to be created 
+   */
   private int _nextUserId;
+  /** 
+   * The id of the next Work to be created 
+   */
   private int _nextWorkId;
-  private HashMap<Integer,User> _userList; 
+  /**
+   * HashMap that stores all the Users by Id
+   */
+  private HashMap<Integer,User> _userList;
+  /**
+   * HashMap that stores all the Works by Id
+   */
   private HashMap<Integer,Work> _workList;
+  /**
+   * List that stores all the Attended Requests
+   */
   private List<Request> _requests;
+  /**
+   * List that stores all the Request Rules
+   */
   private List<Rules> _rules;
 
+  /**
+   * Constructor of the Library Class
+   * Inicializes the nextUserId and nextWorkId at 0
+   * Adds all the current Request Rules to the _rules array
+   */
   public Library(){
     _nextWorkId = 0;
     _nextUserId = 0;
@@ -38,30 +69,54 @@ public class Library implements Serializable {
     _rules.add(new CheckPrice());
   }
 
+  /**
+   * @return the NextWorkId
+   */
   int getNextWorkId(){
     return _nextWorkId; 
   }
 
+  /**
+   * @return the NextUserId
+   */
   int getNextUserId(){
     return _nextUserId;
   }
 
+  /**
+   * Increments the NextUserId variable 
+   */
   void incrementUserId(){
     _nextUserId++;
   }
 
+  /**
+   * Increments the NextWorkId variable 
+   */
   void incrementWorkId(){
     _nextWorkId++; 
   }
 
+  /**
+   * @return the HashMap that store Users
+   */
   HashMap<Integer,User> getAllUsers(){
     return _userList;
   }
 
+  /**
+   * @return the HashMap that store Works
+   */
   HashMap<Integer,Work> getAllWorks(){
     return _workList;
   }
 
+  /**
+   * Creates a new User and Stores it in the HashMap
+   * Receives the User Name and User Email
+   * @param uName
+   * @param uMail
+   */
   void createUser(String uName, String uMail){
     User u = new User(_nextUserId, uName, uMail);
     _userList.put(_nextUserId, u);
@@ -69,34 +124,68 @@ public class Library implements Serializable {
 
    }
 
-  void addUser(User u){
-    _userList.put(_nextUserId,u);
+   /**
+   * Inserts a User into the HashMap
+   * @param user
+   */
+  void addUser(User user){
+    _userList.put(_nextUserId, user);
     _nextUserId++;
   }
 
-  void attendRequest(Request req){
-    _requests.add(req);
+  /**
+   * Inserts a Request into the Request List
+   * @param request
+   */
+  void attendRequest(Request request){
+    _requests.add(request);
   }
 
-  void addBook(Book b){
-    _workList.put(_nextWorkId, b);
+  /**
+   * Inserts a Book into the Works HashMap
+   * @param book
+   */
+  void addBook(Book book){
+    _workList.put(_nextWorkId, book);
     _nextWorkId++;
   }
 
-  void addDvd(Dvd d){
-    _workList.put(_nextWorkId, d);
+  /**
+   * Inserts a Dvd into the Works HashMap
+   * @param dvd
+   */
+  void addDvd(Dvd dvd){
+    _workList.put(_nextWorkId, dvd);
     _nextWorkId++;
   }
 
-  void createBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String cat){
-    Book b = new Book(_nextWorkId ,wTitle ,wPrice , wCopies, wAuthor, wISBN, cat);
-    _workList.put(_nextWorkId, b);
+  /**
+   * Creates a new Book and Stores it in the Works hash map
+   * @param wTitle
+   * @param wPrice
+   * @param wCopies
+   * @param wAuthor
+   * @param wISBN
+   * @param wCategory
+   */
+  void createBook(String wTitle ,int wPrice ,int wCopies ,String wAuthor ,String wISBN, String wCategory){
+    Book book = new Book(_nextWorkId, wTitle, wPrice, wCopies, wAuthor, wISBN, wCategory);
+    _workList.put(_nextWorkId, book);
     _nextWorkId++;
   }
 
-  void createDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector ,String wIGAC, String cat){
-    Dvd b = new Dvd(_nextWorkId ,wTitle ,wPrice ,wCopies ,wDirector ,wIGAC, cat);
-    _workList.put(_nextWorkId, b);
+  /**
+   * Creates a new Dvd and Stores it in the Works hash map
+   * @param wTitle
+   * @param wPrice
+   * @param wCopies
+   * @param wDirector
+   * @param wIGAC
+   * @param wCategory
+   */
+  void createDvd(String wTitle ,int wPrice ,int wCopies ,String wDirector ,String wIGAC, String wCategory){
+    Dvd dvd = new Dvd(_nextWorkId ,wTitle ,wPrice ,wCopies ,wDirector ,wIGAC, wCategory);
+    _workList.put(_nextWorkId, dvd);
     _nextWorkId++;
   }
 
@@ -104,11 +193,13 @@ public class Library implements Serializable {
    * Verifys all Check rules for Requisitions in Order 
    * Returns the number of the Rule it failed
    * If no rule fails returns 0
+   * @param user
+   * @param work
    **/
-  int verifyReq(User u, Work w){
+  int verifyReq(User user, Work work){
     int i = 1;
-    for(Rules r : _rules){
-      if(!r.rule(u, w)){
+    for(Rules rule : _rules){
+      if(!rule.rule(user, work)){
         return i;
       }
       i++;
@@ -116,111 +207,153 @@ public class Library implements Serializable {
     return 0;
   } 
 
-  int atributeReturnDate(User u, Work w){
-    if(u.getBehaviour().equals("FALTOSO")){
+  /**
+   * Acording to the User and Work given atributes a Return Date
+   * @param user
+   * @param work
+   * @return the integer representing the time until the return Date (each unit equals to one day)
+   */
+  int atributeReturnDate(User user, Work work){
+    if(user.getBehaviour().equals("FALTOSO")){
       return 2;
     }
 
-    if(w.getCopies() == 1){
-      if(u.getBehaviour().equals("NORMAL")){
+    if(work.getCopies() == 1){
+      if(user.getBehaviour().equals("NORMAL")){
         return 3;
       }
-      if(u.getBehaviour().equals("CUMPRIDOR")){
+      if(user.getBehaviour().equals("CUMPRIDOR")){
         return 5;
       }
     }
 
-    else if(w.getCopies() <= 5){
-      if(u.getBehaviour().equals("NORMAL")){
+    else if(work.getCopies() <= 5){
+      if(user.getBehaviour().equals("NORMAL")){
         return 8;
       }
-      if(u.getBehaviour().equals("CUMPRIDOR")){
+      if(user.getBehaviour().equals("CUMPRIDOR")){
         return 15;
       }
     }
 
     else{
-      if(u.getBehaviour().equals("NORMAL")){
+      if(user.getBehaviour().equals("NORMAL")){
         return 15;
       }
-      if(u.getBehaviour().equals("CUMPRIDOR")){
+      if(user.getBehaviour().equals("CUMPRIDOR")){
         return 30;
       }
     }
     return -1;
   }
 
-  int createRequest(User u, Work w, int date) throws RuleFailedException{ 
-    int res = verifyReq(u, w);
+  /**
+   * Receives a user, a Work and a Date and creates an acording Request 
+   * Automaticly removes the Available copies number of set Work by One
+   * @param user
+   * @param work
+   * @param date
+   * @return the created Request
+   */
+  int createRequest(User user, Work work, int date) throws RuleFailedException{ 
+    int res = verifyReq(user, work);
 
-    if(res == 0 && u.getIsSuspended() == false){
+    if(res == 0 && user.getIsSuspended() == false){
 
-      int deadline = atributeReturnDate(u, w) + date;
-      Request r = new Request(deadline, u, w);
-      _requests.add(r);
-      u.makeRequest(r);
-      w.removeAvailableCopies();
+      int deadline = atributeReturnDate(user, work) + date;
+      Request request = new Request(deadline, user, work);
+      _requests.add(request);
+      user.makeRequest(request);
+      work.removeAvailableCopies();
       return deadline;    
     }
     else if(res == 3){
       return -1;
     }
-    throw new RuleFailedException(u.getUserID(), w.getWorkID(), res);
+    throw new RuleFailedException(user.getUserID(), work.getWorkID(), res);
   }
 
-  int returnW(User u, Work w, int date){
-    for(Request r : _requests){
-      if(r.getUser() == u && r.getWork() == w){
-        int deadline = r.getDeadline();
-        int numReqs = u.getNumRequests();
-        w.incrementAvailableCopies();
-        u.deleteRequests(r);
-        _requests.remove(r);
+  /**
+   * User returns Work at the date passed as argument
+   * @param user
+   * @param work 
+   * @param date
+   * @return the fine corresponding to the deliver of set work (0 if delivered on time)
+   */
+  int returnWork(User user, Work work, int date){
+    for(Request request : _requests){
+      if(request.getUser() == user && request.getWork() == work){
+        int deadline = request.getDeadline();
+        int numReqs = user.getNumRequests();
+        work.incrementAvailableCopies();
+        user.deleteRequests(request);
+        _requests.remove(request);
         if(deadline >= date){
-          u.workDeliveredOnTime();
+          user.workDeliveredOnTime();
         }
         else if(deadline < date){
-          u.workNotDeliveredOnTime();
+          user.workNotDeliveredOnTime();
         }
-        w.notificationReq();
-        u.checkStreak();  
-        return r.getFine();
+        work.notificationReq();
+        user.checkStreak();  
+        return request.getFine();
       }
     }
     return -1;
   }
 
+  /**
+   * Updates the request variables in acordance to the date
+   * @param date
+   */
   void updateRequests(int date){
-    for(Request r : _requests){
-      r.updateReq(date);
+    for(Request request : _requests){
+      request.updateReq(date);
     }
   }
 
+  /**
+   * Searchs for the User with matching id
+   * @param id
+   * @return the corresponding User
+   */
   User findUserbyId(int id){
-    User u = _userList.get(id);
-    return u;
+    User user = _userList.get(id);
+    return user;
   }
 
+  /**
+   * Searchs for the Work with matching id
+   * @param id
+   * @return the corresponding Work
+   */
   Work findWorkbyId(int id){
-    Work w = _workList.get(id);
-    return w;
+    Work work = _workList.get(id);
+    return work;
   }
   
   /**
   * Search Parameter : Title of the Work
+  * @param searchTerm
+  * @return the work corresponding to the search Parameter
   **/
   Work findWorkbyTitle(String searchTerm){
     List<Work> workArrays = new ArrayList<Work>(_workList.values());
-    for(Work w : workArrays){
-        if(w.getTitle().equals(searchTerm)){
-          return w;
+    for(Work work : workArrays){
+        if(work.getTitle().equals(searchTerm)){
+          return work;
         }
     }
     return null;
   }
 
-  Category createCat(String s){
-    switch(s){
+  /**
+   * By given String creates a Category Class
+   * @param string
+   * @return the corresponding category class
+   */
+  Category createCat(String string){
+    switch(string){
       
       case "Referência":
         return Category.REFERENCE;
