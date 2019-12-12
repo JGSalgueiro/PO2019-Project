@@ -14,8 +14,6 @@ import m19.app.exception.NoSuchWorkException;
  */
 public class DoRequestWork extends Command<LibraryManager> {
   /** Name of the User and Id of the Work to be requested */
-  private Input<Integer> _uId;
-  private Input<Integer> _wId;
   private Input<String> _wantsInfo;
 
   /**
@@ -28,27 +26,26 @@ public class DoRequestWork extends Command<LibraryManager> {
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
   public final void execute() throws DialogException, NoSuchUserException, NoSuchWorkException{
-    try{
+    _form.clear();
+    Input<Integer> _uId = _form.addIntegerInput(Message.requestUserId());
+    Input<Integer> _wId = _form.addIntegerInput(Message.requestWorkId());
+    _form.parse();
+
+    int returnValue = _receiver.requestWork(_uId.value(), _wId.value());
+
+    if(returnValue != -1){
+      _display.popup(Message.workReturnDay(_wId.value(), returnValue));
       _form.clear();
-      _uId = _form.addIntegerInput(Message.requestUserId());
-      _wId = _form.addIntegerInput(Message.requestWorkId());
+    }
+    else{
+      _form.clear();
+      _wantsInfo = _form.addStringInput(Message.requestReturnNotificationPreference());
       _form.parse();
-
-      int returnValue = _receiver.requestWork(_uId.value(), _wId.value());
-
-      if(returnValue != -1){
-        _display.popup(Message.workReturnDay(_wId.value(), returnValue));
-        _form.clear();
+      if(_wantsInfo.value().equals("s")){
+        _receiver.addUserReq(_uId.value(), _wId.value());
       }
-      else{
-        _form.clear();
-        _wantsInfo = _form.addStringInput(Message.requestReturnNotificationPreference());
-        _form.parse();
-        if(_wantsInfo.value().equals("s")){
-          _receiver.addUserReq(_uId.value(), _wId.value());
-        }
-      }
-      _form.clear();
-    }catch(NullPointerException e){}
+    }
+    _form.clear();
+
   }
 }

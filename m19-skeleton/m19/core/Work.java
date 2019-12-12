@@ -31,13 +31,13 @@ public abstract class Work extends Observable implements Serializable{
 		_availableCopies = wCopies;
 		_reqUsers = new ArrayList<Observer>();
 		_retUsers = new ArrayList<Observer>();
-		if(cat.equals("SCITECH")){
+		if("SCITECH".equals(cat)){
 			_category = Category.SCITECH;
 		}
-		else if (cat.equals("FICTION")) {
+		else if ("FICTION".equals(cat)) {
 			_category = Category.FICTION;
 		}
-		else if (cat.equals("REFERENCE")) {
+		else if ("REFERENCE".equals(cat)) {
 			_category = Category.REFERENCE;
 		}
 		else{
@@ -97,8 +97,8 @@ public abstract class Work extends Observable implements Serializable{
 		_reqUsers.add(o);
 	}
 	
-	void removeUserReq(Observer o){
-		_reqUsers.remove(o);
+	void removeUserReq(){
+		_reqUsers.clear();
 	}
 	
 	/**

@@ -30,6 +30,7 @@ public class DoShowUser extends Command<LibraryManager> {
       _display.popup(u.toString());
       _form.clear();
     }catch(NullPointerException e){
+      _form.clear();
       throw new NoSuchUserException(_id.value());
     };
   }

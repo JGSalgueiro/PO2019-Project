@@ -66,12 +66,24 @@ public class User implements Serializable, Observer{
 	}
 
 	void workDeliveredOnTime(){
-		_deliveredOnTime++;
+		if(_deliveredOnTime < 0){
+			_deliveredOnTime = 1;
+		}
+		else{
+			_deliveredOnTime++;
+		}
 	}
 
 	void workNotDeliveredOnTime(){
-		_deliveredOnTime--;
+		if(_deliveredOnTime > 0){
+			_deliveredOnTime = -1;
+		}
+		else{
+			_deliveredOnTime--;
+		}
 	}
+
+
 
 	/**
 	 * Updates the User Behaviour acording to its last delivers
@@ -83,6 +95,11 @@ public class User implements Serializable, Observer{
 		if(_deliveredOnTime == 5){
 			_behaviour = new Abiding();
 		}
+		if(_behaviour.getBehaviour().equalsIgnoreCase("CUMPRIDOR")){
+			if(_deliveredOnTime == -1){
+				_behaviour = new Default();
+			}
+		}
 		if(_deliveredOnTime == 3){
 			_behaviour = new Default();
 		}
@@ -90,6 +107,10 @@ public class User implements Serializable, Observer{
 
 	void pay(int payedAmount){
 		_fine = _fine - payedAmount;
+	}
+
+	void payAll(){
+		_fine = 0;
 	}
 
 	void setFine(int f){
@@ -105,13 +126,12 @@ public class User implements Serializable, Observer{
 	}
 
 	public String toString(){
-		if(_isSuspended == false){
+		if(!_isSuspended){
 			return(_userID + " - " + _name + " - " + _email + " - " + _behaviour.getBehaviour() + " - ACTIVO");
 		}
-		else if(_isSuspended == true){
+		else{
 			return(_userID + " - " + _name + " - " + _email + " - " + _behaviour.getBehaviour() + " - SUSPENSO" + " - EUR " + _fine);
 		}
-	return null;
 	}
 
 	void makeRequest(Request req){
@@ -144,9 +164,20 @@ public class User implements Serializable, Observer{
 		return i;
 	}
 
+	/**
+	 * Acording to the works number of Copies atributes a return Date
+	 */
+	int atributeReturnDate(int numCopies){
+		return _behaviour.atributeReturnDate(numCopies);
+	}
+
 	@Override
 	public void update(Notification n){
 		_notification.add(n);
+	}
+
+	void clearNotifications(){
+		_notification.clear();
 	}
 
 	List<Notification> getNotification(){

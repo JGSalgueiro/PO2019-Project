@@ -6,7 +6,7 @@ package m19.core;
 public class CheckPrice extends Rules{
 	@Override
 	public Boolean rule(User u, Work w){
-		if(w.getPrice() > 25){
+		if(w.getPrice() > 25 && !u.getBehaviour().equals("CUMPRIDOR")){
 			return false;
 		}
 

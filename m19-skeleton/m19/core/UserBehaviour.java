@@ -11,4 +11,5 @@ public abstract class UserBehaviour implements Serializable{
 
 	abstract int maxRequests();
 	abstract String getBehaviour();
+	abstract int atributeReturnDate(int numCopies);
 }

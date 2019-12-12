@@ -34,6 +34,9 @@ public class DoSave extends Command<LibraryManager> {
       }
       else{
         _form.parse();
+        if(_filename.value().equals("")){
+          throw new FileOpenFailedException(_filename.value());
+        }
         _receiver.saveAs(_filename.value());
       }
     } catch (FileNotFoundException fnfe) {

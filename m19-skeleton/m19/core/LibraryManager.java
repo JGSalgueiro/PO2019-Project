@@ -15,6 +15,7 @@ import m19.app.exception.NoSuchWorkException;
 import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.app.exception.UserIsActiveException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,11 +38,11 @@ public class LibraryManager {
     _rules = null;
   }
   
-  public HashMap<Integer,User> getAllUsers(){
+  public Map<Integer,User> getAllUsers(){
     return _library.getAllUsers();
   }
 
-  public HashMap<Integer,Work> getAllWorks(){
+  public Map<Integer,Work> getAllWorks(){
     return _library.getAllWorks();
   }
 
@@ -67,8 +68,7 @@ public class LibraryManager {
   }
 
   public User getUser(int id){
-    User user = _library.findUserbyId(id);
-    return user;
+    return _library.findUserbyId(id);
   }
 
   /**
@@ -77,13 +77,11 @@ public class LibraryManager {
    * @return the Work with given Title
    */
   public Work getWork(String searchTerm){
-    Work work = _library.findWorkbyTitle(searchTerm);
-    return work;
+    return _library.findWorkbyTitle(searchTerm);
   }
 
   public Work getWorkbyId(int id){
-    Work work = _library.findWorkbyId(id);
-    return work;
+    return _library.findWorkbyId(id);
   }
 
   public int getUserNum(){
@@ -132,8 +130,7 @@ public class LibraryManager {
       throw new NoSuchWorkException(workId);
     }
 
-    int returnDate = _library.createRequest(user, work, _date.getTime());
-    return returnDate;
+    return _library.createRequest(user, work, _date.getTime());
   }
 
   /** 
@@ -169,8 +166,7 @@ public class LibraryManager {
       throw new WorkNotBorrowedByUserException(workId, userId);
     }
     
-    int fine = _library.returnWork(user, work, _date.getTime());
-    return fine;
+    return _library.returnWork(user, work, _date.getTime());
   }
 
   /**
@@ -189,6 +185,22 @@ public class LibraryManager {
         user.setSuspension(false);
       }
       user.pay(userFine);
+    }catch(NullPointerException e){
+      throw new NoSuchUserException(userId);
+    }
+  }
+
+  public void payAllFine(int userId) throws NoSuchUserException, UserIsActiveException{
+    try{
+      User user = getUser(userId);
+      if(!user.getIsSuspended()){
+        throw new UserIsActiveException(userId);
+      }
+      int faulty = user.checkPassedDeadline();
+      if(faulty == 0){
+        user.setSuspension(false);
+      }
+      user.payAll();
     }catch(NullPointerException e){
       throw new NoSuchUserException(userId);
     }
@@ -218,6 +230,16 @@ public class LibraryManager {
     } 
   }
 
+  public void clearUserNotifications(int userId) throws NoSuchUserException{
+    try{
+      User user = getUser(userId);
+      user.clearNotifications();
+      
+    }catch(NullPointerException e){
+      throw new NoSuchUserException(userId);
+    } 
+  }
+
   /**
    * Search Paramether: Title or Creator of the Work
    * @param searchTerm
@@ -227,7 +249,7 @@ public class LibraryManager {
     List<Work> arrayWorks = new ArrayList<Work>(getAllWorks().values());
     List<Work> searchedWorks = new ArrayList<Work>();
     for(Work work : arrayWorks){
-      if(work.getTitle().indexOf(searchTerm) != -1 || work.getCreator().indexOf(searchTerm) != -1){
+      if(work.getTitle().toLowerCase().indexOf(searchTerm) != -1 || work.getCreator().toLowerCase().indexOf(searchTerm) != -1){
         searchedWorks.add(work);
       }
     }
@@ -244,14 +266,16 @@ public class LibraryManager {
    */
   public void save() throws MissingFileAssociationException, IOException {
     ObjectOutputStream objOut = null;
+    FileOutputStream fpout = null;
     try{
-      FileOutputStream fpout = new FileOutputStream(_filename);
+      fpout = new FileOutputStream(_filename);
       objOut = new ObjectOutputStream(fpout);
       objOut.writeObject(_library);
       objOut.writeObject(_date);
 
     } finally{
       if (objOut != null){
+        fpout.close();
         objOut.close();
       }
     }
@@ -269,14 +293,16 @@ public class LibraryManager {
   public void saveAs(String filename) throws MissingFileAssociationException, IOException {
     _filename = filename;
     ObjectOutputStream objOut = null;
+    FileOutputStream fpout = null;
     try{
-      FileOutputStream fpout = new FileOutputStream(filename);
+      fpout = new FileOutputStream(filename);
       objOut = new ObjectOutputStream(fpout);
       objOut.writeObject(_library);
       objOut.writeObject(_date);
 
     } finally{
       if (objOut != null){
+        fpout.close();
         objOut.close();
       }
     }
@@ -293,8 +319,9 @@ public class LibraryManager {
    */
   public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
     ObjectInputStream objIn = null;
+    FileInputStream file = null;
     try{
-      FileInputStream file = new FileInputStream(filename);
+      file = new FileInputStream(filename);
       objIn = new ObjectInputStream(file);
       _library = (Library)objIn.readObject();
       _date = (Date)objIn.readObject(); 
@@ -302,6 +329,7 @@ public class LibraryManager {
 
     } finally {
       if (objIn != null){
+        file.close();
         objIn.close();
       }
     }

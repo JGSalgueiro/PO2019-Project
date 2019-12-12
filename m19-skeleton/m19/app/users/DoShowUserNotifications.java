@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class DoShowUserNotifications extends Command<LibraryManager> {
   private Input<Integer> _uId;
-  private List<Notification> _notification;
 
   /**
    * @param receiver
@@ -27,10 +26,11 @@ public class DoShowUserNotifications extends Command<LibraryManager> {
   @Override
   public final void execute() throws DialogException {
     _form.parse();
-    _notification = _receiver.warnUserWhenWorkIsAvailable(_uId.value());
+    List<Notification> _notification = _receiver.warnUserWhenWorkIsAvailable(_uId.value());
     for(Notification n : _notification){
       _display.addLine(n.toString());
     }
+    _receiver.clearUserNotifications(_uId.value());
     _display.display();
   }
 }

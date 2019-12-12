@@ -5,6 +5,7 @@ import java.io.IOException;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.RuleFailedException;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,11 @@ public class Library implements Serializable {
   /**
    * HashMap that stores all the Users by Id
    */
-  private HashMap<Integer,User> _userList;
+  private Map<Integer,User> _userList;
   /**
    * HashMap that stores all the Works by Id
    */
-  private HashMap<Integer,Work> _workList;
+  private Map<Integer,Work> _workList;
   /**
    * List that stores all the Attended Requests
    */
@@ -100,14 +101,14 @@ public class Library implements Serializable {
   /**
    * @return the HashMap that store Users
    */
-  HashMap<Integer,User> getAllUsers(){
+  Map<Integer,User> getAllUsers(){
     return _userList;
   }
 
   /**
    * @return the HashMap that store Works
    */
-  HashMap<Integer,Work> getAllWorks(){
+  Map<Integer,Work> getAllWorks(){
     return _workList;
   }
 
@@ -208,46 +209,6 @@ public class Library implements Serializable {
   } 
 
   /**
-   * Acording to the User and Work given atributes a Return Date
-   * @param user
-   * @param work
-   * @return the integer representing the time until the return Date (each unit equals to one day)
-   */
-  int atributeReturnDate(User user, Work work){
-    if(user.getBehaviour().equals("FALTOSO")){
-      return 2;
-    }
-
-    if(work.getCopies() == 1){
-      if(user.getBehaviour().equals("NORMAL")){
-        return 3;
-      }
-      if(user.getBehaviour().equals("CUMPRIDOR")){
-        return 5;
-      }
-    }
-
-    else if(work.getCopies() <= 5){
-      if(user.getBehaviour().equals("NORMAL")){
-        return 8;
-      }
-      if(user.getBehaviour().equals("CUMPRIDOR")){
-        return 15;
-      }
-    }
-
-    else{
-      if(user.getBehaviour().equals("NORMAL")){
-        return 15;
-      }
-      if(user.getBehaviour().equals("CUMPRIDOR")){
-        return 30;
-      }
-    }
-    return -1;
-  }
-
-  /**
    * Receives a user, a Work and a Date and creates an acording Request 
    * Automaticly removes the Available copies number of set Work by One
    * @param user
@@ -258,9 +219,9 @@ public class Library implements Serializable {
   int createRequest(User user, Work work, int date) throws RuleFailedException{ 
     int res = verifyReq(user, work);
 
-    if(res == 0 && user.getIsSuspended() == false){
+    if(res == 0 && !user.getIsSuspended()){
 
-      int deadline = atributeReturnDate(user, work) + date;
+      int deadline = user.atributeReturnDate(work.getCopies()) + date;
       Request request = new Request(deadline, user, work);
       _requests.add(request);
       user.makeRequest(request);
@@ -284,7 +245,6 @@ public class Library implements Serializable {
     for(Request request : _requests){
       if(request.getUser() == user && request.getWork() == work){
         int deadline = request.getDeadline();
-        int numReqs = user.getNumRequests();
         work.incrementAvailableCopies();
         user.deleteRequests(request);
         _requests.remove(request);
@@ -295,6 +255,7 @@ public class Library implements Serializable {
           user.workNotDeliveredOnTime();
         }
         work.notificationReq();
+        work.removeUserReq();
         user.checkStreak();  
         return request.getFine();
       }
@@ -318,8 +279,7 @@ public class Library implements Serializable {
    * @return the corresponding User
    */
   User findUserbyId(int id){
-    User user = _userList.get(id);
-    return user;
+    return _userList.get(id);
   }
 
   /**
@@ -328,8 +288,7 @@ public class Library implements Serializable {
    * @return the corresponding Work
    */
   Work findWorkbyId(int id){
-    Work work = _workList.get(id);
-    return work;
+    return _workList.get(id);
   }
   
   /**

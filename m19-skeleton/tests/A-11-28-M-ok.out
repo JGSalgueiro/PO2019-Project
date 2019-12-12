@@ -20,41 +20,32 @@ Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 1 deve ser devolvida no dia 28.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 1 deve ser devolvida no dia 15.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 1 deve ser devolvida no dia 28.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 2 deve ser devolvida no dia 30.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: A obra 1 não foi requisitada pelo utente 1.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 3 deve ser devolvida no dia 30.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: A obra 1 não foi requisitada pelo utente 1.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 6 deve ser devolvida no dia 15.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 2 deve ser devolvida no dia 35.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 7 deve ser devolvida no dia 8.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: Opção inválida!
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Devolver obra: Operação inválida: A obra 2 não foi requisitada pelo utente 2.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não pode requisitar a obra 0. Violação da regra 4.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra

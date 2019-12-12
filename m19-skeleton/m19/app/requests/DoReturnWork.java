@@ -8,6 +8,7 @@ import pt.tecnico.po.ui.Input;
 import pt.tecnico.po.ui.DialogException;
 import m19.app.exception.NoSuchUserException;
 import m19.app.exception.NoSuchWorkException;
+import m19.app.exception.WorkNotBorrowedByUserException;
 
 /**
  * 4.4.2. Return a work.
@@ -17,10 +18,7 @@ public class DoReturnWork extends Command<LibraryManager> {
   private Input<Integer> _uId;
   private Input<Integer> _wId;
   private Input<String> _wantsInfo;
-  private User _user;
-  private int _fine;
-  private int _numRequests;
-
+ 
   /**
    * @param receiver
    */
@@ -30,18 +28,23 @@ public class DoReturnWork extends Command<LibraryManager> {
 
   /** @see pt.tecnico.po.ui.Command#execute() */
   @Override
-  public final void execute() throws DialogException, NoSuchUserException, NoSuchWorkException {
+  public final void execute() throws DialogException, NoSuchUserException, NoSuchWorkException, WorkNotBorrowedByUserException {
     try{
-      _form.clear();
       _uId = _form.addIntegerInput(Message.requestUserId());
       _wId = _form.addIntegerInput(Message.requestWorkId());
       _form.parse();
+      int uId = _uId.value();
+      int wId = _wId.value();
+
+      User _user = _receiver.getUser(_uId.value());
+      if(_user == null){
+        _form.clear();
+        throw new NoSuchUserException(_uId.value());
+      }
+      int _fine = _receiver.getUserFine(_user);
+      int _numRequests = _receiver.getNumberOfUserRequests(_user);
 
       int returnValue = _receiver.returnWork(_uId.value() , _wId.value());
-
-      _user = _receiver.getUser(_uId.value());
-      _fine = _receiver.getUserFine(_user);
-      _numRequests = _receiver.getNumberOfUserRequests(_user);
 
       if(returnValue > 0){
         _form.clear();
@@ -68,9 +71,14 @@ public class DoReturnWork extends Command<LibraryManager> {
       }
       _form.clear();
     }catch(NoSuchUserException e){
+      _form.clear();
       throw new NoSuchUserException(_uId.value());
     }catch(NoSuchWorkException e){
+      _form.clear();
       throw new NoSuchWorkException(_wId.value());
+    }catch(WorkNotBorrowedByUserException e){
+      _form.clear(); 
+      throw new WorkNotBorrowedByUserException(_wId.value(), _uId.value());
     }
   }
 } 
